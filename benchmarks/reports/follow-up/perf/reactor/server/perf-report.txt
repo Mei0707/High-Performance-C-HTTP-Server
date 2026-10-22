@@ -1,0 +1,41 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 1K of event 'cpu-clock'
+# Event count (approx.): 13595959460
+#
+# Overhead  Command          Shared Object        Symbol                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+# ........  ...............  ...................  .......................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+#
+    18.80%  pulsehttp_serve  [kernel.kallsyms]    [k] try_to_wake_up
+     8.62%  pulsehttp_serve  [kernel.kallsyms]    [k] finish_task_switch.isra.0
+     8.47%  pulsehttp_serve  [kernel.kallsyms]    [k] sock_def_readable
+     6.61%  pulsehttp_serve  [kernel.kallsyms]    [k] el0_svc
+     3.05%  pulsehttp_serve  libc.so.6            [.] epoll_ctl
+     2.90%  pulsehttp_serve  [kernel.kallsyms]    [k] do_epoll_ctl
+     2.45%  pulsehttp_serve  [vdso]               [.] __kernel_clock_gettime
+     2.15%  pulsehttp_serve  [kernel.kallsyms]    [k] nf_conntrack_tcp_packet
+     2.01%  pulsehttp_serve  [kernel.kallsyms]    [k] arch_counter_get_cntvct
+     1.86%  pulsehttp_serve  [kernel.kallsyms]    [k] __arch_copy_to_user
+     1.63%  pulsehttp_serve  [kernel.kallsyms]    [k] __schedule
+     1.56%  pulsehttp_serve  [kernel.kallsyms]    [k] __fget_light
+     1.04%  pulsehttp_serve  [kernel.kallsyms]    [k] invoke_syscall.constprop.0
+     0.89%  pulsehttp_serve  [kernel.kallsyms]    [k] tcp_ack
+     0.89%  pulsehttp_serve  [kernel.kallsyms]    [k] tcp_poll
+     0.82%  pulsehttp_serve  [kernel.kallsyms]    [k] __local_bh_enable_ip
+     0.82%  pulsehttp_serve  libc.so.6            [.] write
+     0.74%  pulsehttp_serve  [kernel.kallsyms]    [k] __siphash_unaligned
+     0.74%  pulsehttp_serve  [kernel.kallsyms]    [k] handle_softirqs
+     0.74%  pulsehttp_serve  pulsehttp_server     [.] pulsehttp::HttpParser::parse_headers(std::basic_string_view<char, std::char_traits<char> >)
+     0.67%  pulsehttp_serve  [kernel.kallsyms]    [k] __arch_copy_from_user
+     0.67%  pulsehttp_serve  libc.so.6            [.] recv
+     0.67%  pulsehttp_serve  pulsehttp_server     [.] pulsehttp::Router::dispatch(pulsehttp::HttpRequest const&) const
+     0.52%  pulsehttp_serve  [kernel.kallsyms]    [k] tcp_v4_rcv
+     0.52%  pulsehttp_serve  libc.so.6            [.] malloc
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

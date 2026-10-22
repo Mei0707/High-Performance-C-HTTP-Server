@@ -1,0 +1,45 @@
+200
+# TYPE http_requests_total counter
+http_requests_total 41301280
+# TYPE http_active_connections gauge
+http_active_connections 9
+# TYPE http_connections_accepted_total counter
+http_connections_accepted_total 6802880
+# TYPE http_connections_closed_total counter
+http_connections_closed_total 6802871
+# TYPE http_worker_queue_depth gauge
+http_worker_queue_depth 0
+# TYPE http_worker_queue_rejections_total counter
+http_worker_queue_rejections_total 3619557
+# TYPE http_bytes_received_total counter
+http_bytes_received_total 2095903188
+# TYPE http_bytes_sent_total counter
+http_bytes_sent_total 5245944841
+# TYPE http_parse_errors_total counter
+http_parse_errors_total 0
+# TYPE http_connection_timeouts_total counter
+http_connection_timeouts_total 0
+# TYPE http_response_write_errors_total counter
+http_response_write_errors_total 0
+# TYPE http_connection_rejections_total counter
+http_connection_rejections_total 0
+# TYPE http_stale_completions_total counter
+http_stale_completions_total 0
+# TYPE http_log_drops_total counter
+http_log_drops_total 0
+# TYPE http_handler_errors_total counter
+http_handler_errors_total 0
+# TYPE http_request_duration_seconds histogram
+http_request_duration_seconds_bucket{le="0.0001"} 41227108
+http_request_duration_seconds_bucket{le="0.0005"} 41291865
+http_request_duration_seconds_bucket{le="0.001"} 41294057
+http_request_duration_seconds_bucket{le="0.005"} 41295068
+http_request_duration_seconds_bucket{le="0.01"} 41295094
+http_request_duration_seconds_bucket{le="0.05"} 41295104
+http_request_duration_seconds_bucket{le="0.1"} 41295118
+http_request_duration_seconds_bucket{le="0.5"} 41295203
+http_request_duration_seconds_bucket{le="1"} 41295390
+http_request_duration_seconds_bucket{le="+Inf"} 41301280
+http_request_duration_seconds_sum 8131.56
+http_request_duration_seconds_count 41301280
+

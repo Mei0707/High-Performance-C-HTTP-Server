@@ -1,0 +1,217 @@
+Start testing: Oct 22 19:48 UTC
+----------------------------------------------------------
+1/4 Testing: unit
+1/4 Test: unit
+Command: "/home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/build/unit_tests"
+Directory: /home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/build
+"unit" start time: Oct 22 19:48 UTC
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+[==========] Running 35 tests from 8 test suites.
+[----------] Global test environment set-up.
+[----------] 4 tests from Parser
+[ RUN      ] Parser.FragmentedRequestAndBinaryBody
+[       OK ] Parser.FragmentedRequestAndBinaryBody (0 ms)
+[ RUN      ] Parser.PipelinedRequestsAndConnectionTokens
+[       OK ] Parser.PipelinedRequestsAndConnectionTokens (0 ms)
+[ RUN      ] Parser.HeaderLimitsAndNul
+[       OK ] Parser.HeaderLimitsAndNul (0 ms)
+[ RUN      ] Parser.HeaderLimitDoesNotCountPipelinedBytes
+[       OK ] Parser.HeaderLimitDoesNotCountPipelinedBytes (0 ms)
+[----------] 4 tests from Parser (0 ms total)
+
+[----------] 2 tests from Response
+[ RUN      ] Response.HeadAndBinaryLength
+[       OK ] Response.HeadAndBinaryLength (0 ms)
+[ RUN      ] Response.RejectsResponseSplittingAndFramingOverrides
+[       OK ] Response.RejectsResponseSplittingAndFramingOverrides (0 ms)
+[----------] 2 tests from Response (0 ms total)
+
+[----------] 3 tests from ThreadPool
+[ RUN      ] ThreadPool.BoundedQueueAndDrainingShutdown
+[       OK ] ThreadPool.BoundedQueueAndDrainingShutdown (0 ms)
+[ RUN      ] ThreadPool.ExceptionsDoNotRemoveWorkers
+[       OK ] ThreadPool.ExceptionsDoNotRemoveWorkers (0 ms)
+[ RUN      ] ThreadPool.ConcurrentProducersAndConsumers
+[       OK ] ThreadPool.ConcurrentProducersAndConsumers (2 ms)
+[----------] 3 tests from ThreadPool (2 ms total)
+
+[----------] 1 test from Fd
+[ RUN      ] Fd.MoveAndCloseExactlyOnce
+[       OK ] Fd.MoveAndCloseExactlyOnce (0 ms)
+[----------] 1 test from Fd (0 ms total)
+
+[----------] 1 test from Config
+[ RUN      ] Config.ValidatesCrossFieldLimits
+[       OK ] Config.ValidatesCrossFieldLimits (0 ms)
+[----------] 1 test from Config (0 ms total)
+
+[----------] 1 test from Metrics
+[ RUN      ] Metrics.HistogramBucketsAndCounters
+[       OK ] Metrics.HistogramBucketsAndCounters (0 ms)
+[----------] 1 test from Metrics (0 ms total)
+
+[----------] 1 test from Router
+[ RUN      ] Router.MethodSemanticsAndImmutableRoutes
+[       OK ] Router.MethodSemanticsAndImmutableRoutes (0 ms)
+[----------] 1 test from Router (0 ms total)
+
+[----------] 22 tests from StrictHTTP/Framing
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/0
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/0 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/1
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/1 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/2
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/2 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/3
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/3 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/4
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/4 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/5
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/5 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/6
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/6 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/7
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/7 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/8
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/8 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/9
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/9 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/10
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/10 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/11
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/11 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/12
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/12 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/13
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/13 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/14
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/14 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/15
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/15 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/16
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/16 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/17
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/17 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/18
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/18 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/19
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/19 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/20
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/20 (0 ms)
+[ RUN      ] StrictHTTP/Framing.RejectsAndRemembersError/21
+[       OK ] StrictHTTP/Framing.RejectsAndRemembersError/21 (0 ms)
+[----------] 22 tests from StrictHTTP/Framing (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 35 tests from 8 test suites ran. (2 ms total)
+[  PASSED  ] 35 tests.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"unit" end time: Oct 22 19:48 UTC
+"unit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/4 Testing: integration
+2/4 Test: integration
+Command: "/usr/bin/python3.12" "/home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/tests/integration/test_server.py" "/home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/build/pulsehttp_server"
+Directory: /home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/build
+"integration" start time: Oct 22 19:48 UTC
+Output:
+----------------------------------------------------------
+test_absolute_header_deadline_with_trickle (__main__.ServerTests.test_absolute_header_deadline_with_trickle) ... ok
+test_backpressure_and_recovery (__main__.ServerTests.test_backpressure_and_recovery) ... ok
+test_connection_admission_and_file_limit (__main__.ServerTests.test_connection_admission_and_file_limit) ... ok
+test_connection_churn_and_fd_reuse (__main__.ServerTests.test_connection_churn_and_fd_reuse) ... ok
+test_custom_handlers_exceptions_and_timeout_generation (__main__.ServerTests.test_custom_handlers_exceptions_and_timeout_generation) ... ok
+test_framing_and_limits (__main__.ServerTests.test_framing_and_limits) ... ok
+test_get_head_post_pipeline_fragmentation (__main__.ServerTests.test_get_head_post_pipeline_fragmentation) ... ok
+test_graceful_shutdown_active_request (__main__.ServerTests.test_graceful_shutdown_active_request) ... ok
+test_half_close_still_receives_response (__main__.ServerTests.test_half_close_still_receives_response) ... ok
+test_large_binary_body_and_long_pipeline (__main__.ServerTests.test_large_binary_body_and_long_pipeline) ... ok
+test_processing_timeout_discards_stale_completion (__main__.ServerTests.test_processing_timeout_discards_stale_completion) ... ok
+test_request_and_output_limits (__main__.ServerTests.test_request_and_output_limits) ... ok
+test_static_partial_writes_and_secure_paths (__main__.ServerTests.test_static_partial_writes_and_secure_paths) ... ok
+test_timeouts (__main__.ServerTests.test_timeouts) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 25.065s
+
+OK
+<end of output>
+Test time =  25.18 sec
+----------------------------------------------------------
+Test Passed.
+"integration" end time: Oct 22 19:49 UTC
+"integration" time elapsed: 00:00:25
+----------------------------------------------------------
+
+3/4 Testing: baseline_integration
+3/4 Test: baseline_integration
+Command: "/usr/bin/python3.12" "/home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/tests/integration/test_server.py" "/home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/build/thread_per_connection" "--baseline"
+Directory: /home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/build
+"baseline_integration" start time: Oct 22 19:49 UTC
+Output:
+----------------------------------------------------------
+test_absolute_header_deadline_with_trickle (__main__.ServerTests.test_absolute_header_deadline_with_trickle) ... skipped 'baseline closes on its thread deadlines'
+test_backpressure_and_recovery (__main__.ServerTests.test_backpressure_and_recovery) ... skipped 'baseline has no worker queue'
+test_connection_admission_and_file_limit (__main__.ServerTests.test_connection_admission_and_file_limit) ... ok
+test_connection_churn_and_fd_reuse (__main__.ServerTests.test_connection_churn_and_fd_reuse) ... ok
+test_custom_handlers_exceptions_and_timeout_generation (__main__.ServerTests.test_custom_handlers_exceptions_and_timeout_generation) ... skipped 'custom_routes runs the reactor'
+test_framing_and_limits (__main__.ServerTests.test_framing_and_limits) ... ok
+test_get_head_post_pipeline_fragmentation (__main__.ServerTests.test_get_head_post_pipeline_fragmentation) ... ok
+test_graceful_shutdown_active_request (__main__.ServerTests.test_graceful_shutdown_active_request) ... ok
+test_half_close_still_receives_response (__main__.ServerTests.test_half_close_still_receives_response) ... ok
+test_large_binary_body_and_long_pipeline (__main__.ServerTests.test_large_binary_body_and_long_pipeline) ... ok
+test_processing_timeout_discards_stale_completion (__main__.ServerTests.test_processing_timeout_discards_stale_completion) ... skipped 'baseline has no worker completion queue'
+test_request_and_output_limits (__main__.ServerTests.test_request_and_output_limits) ... ok
+test_static_partial_writes_and_secure_paths (__main__.ServerTests.test_static_partial_writes_and_secure_paths) ... ok
+test_timeouts (__main__.ServerTests.test_timeouts) ... skipped 'baseline closes on its thread deadlines'
+
+----------------------------------------------------------------------
+Ran 14 tests in 21.235s
+
+OK (skipped=5)
+<end of output>
+Test time =  21.30 sec
+----------------------------------------------------------
+Test Passed.
+"baseline_integration" end time: Oct 22 19:49 UTC
+"baseline_integration" time elapsed: 00:00:21
+----------------------------------------------------------
+
+4/4 Testing: experiment_tools
+4/4 Test: experiment_tools
+Command: "/usr/bin/python3.12" "/home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/tests/test_experiment_tools.py"
+Directory: /home/runner/work/High-Performance-C-HTTP-Server/High-Performance-C-HTTP-Server/build
+"experiment_tools" start time: Oct 22 19:49 UTC
+Output:
+----------------------------------------------------------
+test_detects_corruption_and_closes_connection (__main__.ClientTests.test_detects_corruption_and_closes_connection) ... ok
+test_dns_is_not_repeated_for_connection_churn (__main__.ClientTests.test_dns_is_not_repeated_for_connection_churn) ... ok
+test_timeout_reports_header_stage (__main__.ClientTests.test_timeout_reports_header_stage) ... ok
+test_cpu_ranges (__main__.MeasurementTests.test_cpu_ranges) ... ok
+test_errors_do_not_lower_success_latency (__main__.MeasurementTests.test_errors_do_not_lower_success_latency) ... ok
+test_expected_perf_stop_requires_valid_artifacts (__main__.MeasurementTests.test_expected_perf_stop_requires_valid_artifacts) ... ok
+test_network_counters_keep_namespaces_and_detect_bad_rows (__main__.MeasurementTests.test_network_counters_keep_namespaces_and_detect_bad_rows) ... ok
+test_quantiles_and_histogram_counts (__main__.MeasurementTests.test_quantiles_and_histogram_counts) ... ok
+test_rejects_overlap_before_accessing_docker (__main__.MeasurementTests.test_rejects_overlap_before_accessing_docker) ... ok
+test_rejects_zero_duration (__main__.MeasurementTests.test_rejects_zero_duration) ... ok
+test_wall_clock_jump_does_not_dilute_cpu_measurement (__main__.MeasurementTests.test_wall_clock_jump_does_not_dilute_cpu_measurement) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.235s
+
+OK
+<end of output>
+Test time =   1.49 sec
+----------------------------------------------------------
+Test Passed.
+"experiment_tools" end time: Oct 22 19:49 UTC
+"experiment_tools" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Oct 22 19:49 UTC

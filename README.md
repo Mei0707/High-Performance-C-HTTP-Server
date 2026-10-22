@@ -115,3 +115,11 @@ The included client shares the server's CPUs; results do not establish a product
 Read the [proposal review](docs/proposal-review.md), [architecture](docs/architecture.md),
 [protocol contract](docs/protocol.md), [validation record](docs/validation.md), and
 [limitations](docs/limitations.md) for design decisions and evidence.
+
+Additional [controlled experiments](docs/experiments.md) use separate client/server
+containers pinned to disjoint CPUs, compare thousands of mostly idle connections,
+stream bounded soak-test histograms, and collect Linux perf profiles. The manual GitHub
+Actions experiment workflow preserves artifacts for optional longer hosted runs.
+See the [follow-up measurements](benchmarks/reports/follow-up/README.md) for the 2,000
+mostly idle connection comparison, separate client CPU measurements, profiles, and
+the retained soak outcomes and qualifications.

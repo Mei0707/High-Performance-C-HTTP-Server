@@ -1,0 +1,14 @@
+Running 15s test @ http://server:8080/hello
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.01ms    4.42ms 225.97ms   98.34%
+    Req/Sec    50.48k     8.27k   65.85k    80.33%
+  Latency Distribution
+     50%  512.00us
+     75%  677.00us
+     90%    1.06ms
+     99%   10.12ms
+  3018602 requests in 15.05s, 362.72MB read
+Requests/sec: 200519.64
+Transfer/sec:     24.10MB
+PULSE_RESULT {"http_200":3018602,"http_other":0,"invalid_bodies":0,"duration_us":15053897,"successful_rps":200519.639533,"p50_ms":0.512000,"p95_ms":1.815000,"p99_ms":10.119000,"connect_errors":0,"read_errors":0,"write_errors":0,"timeouts":0}

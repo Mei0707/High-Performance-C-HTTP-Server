@@ -1,0 +1,82 @@
+{
+  "environment": {
+    "unix_ns": 1792696033165442878,
+    "platform": "Linux-6.10.14-linuxkit-aarch64-with-glibc2.39",
+    "python": "3.12.3",
+    "affinity": [
+      9
+    ],
+    "logical_cpus": 10,
+    "cpuinfo": "processor\t: 0\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 1\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 2\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 3\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 4\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 5\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 6\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 7\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 8\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 9\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0",
+    "meminfo": "MemTotal:        8025424 kB\nMemFree:          353100 kB\nMemAvailable:    4223228 kB\nBuffers:          313340 kB\nCached:          3356732 kB\nSwapCached:          480 kB\nActive:          3146808 kB\nInactive:        3490944 kB\nActive(anon):    2067488 kB\nInactive(anon):  1175968 kB\nActive(file):    1079320 kB\nInactive(file):  2314976 kB\nUnevictable:         168 kB\nMlocked:               0 kB\nSwapTotal:       1048572 kB\nSwapFree:         966684 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:               152 kB\nWriteback:             0 kB\nAnonPages:       2720844 kB\nMapped:          1344204 kB\nShmem:            275768 kB\nKReclaimable:     678804 kB\nSlab:             851880 kB\nSReclaimable:     678804 kB\nSUnreclaim:       173076 kB\nKernelStack:       21696 kB\nPageTables:        25500 kB\nSecPageTables:         0 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     5061284 kB\nCommitted_AS:    8473068 kB\nVmallocTotal:   135288315904 kB\nVmallocUsed:        7564 kB\nVmallocChunk:          0 kB\nPercpu:             9400 kB\nAnonHugePages:   1798144 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB",
+    "fd_limit": [
+      65536,
+      65536
+    ],
+    "pids_max": "256",
+    "memory_max": "536870912",
+    "cpu_max": "max 100000",
+    "commit": "f891d2015b6738315446c4d92e4732c70e72ef74",
+    "experiment_source_sha256": "edf360acbe49abdd22e9e878eeb87dfb9d53e85179f99ff5cbe50e42632474e9"
+  },
+  "arguments": {
+    "mode": "soak",
+    "host": "server",
+    "port": 8080,
+    "output": "/results",
+    "connections": 8,
+    "duration": 1800.0,
+    "dial_parallel": 32,
+    "timeout": 5,
+    "phase_seconds": 30.0,
+    "window_seconds": 5,
+    "overload_connections": 128,
+    "resolved_host": "172.24.0.2",
+    "dns_resolution_ms": 6.853124999906868
+  },
+  "bucket_upper_bounds_ms": [
+    0.1,
+    0.25,
+    0.5,
+    1,
+    2,
+    3,
+    5,
+    10,
+    20,
+    30,
+    50,
+    75,
+    100,
+    200,
+    300,
+    500,
+    1000,
+    2000,
+    3000,
+    5000,
+    null
+  ],
+  "start_unix_ns": 1792696033183262919,
+  "phase_totals": {
+    "steady": {
+      "200": 17896510
+    },
+    "churn": {
+      "200": 3404121
+    },
+    "overload": {
+      "503": 3876886,
+      "200": 6611,
+      "TimeoutError:headers": 12
+    },
+    "recovery": {
+      "200": 17309420
+    }
+  },
+  "unexpected_errors": 12,
+  "elapsed_seconds": 1800.0123762350122,
+  "client_peak_rss_kib": 24728,
+  "end_unix_ns": 1792698781556693878,
+  "completed": true
+}

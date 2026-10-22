@@ -28,6 +28,8 @@ strategy or adaptive overload tuning. Allocation failure is not a recoverable op
 mode; choose limits appropriate to available RAM and descriptors.
 
 Short fuzz/stress/sanitizer runs are evidence for tested paths, not proof of memory safety.
-The supplied CI workflow needs to run on the user's GitHub repository after publication.
+Hosted CI results and artifacts are linked from the follow-up validation report.
 Local Docker measurements share a load generator and virtualized host; they cannot establish
 production throughput, maximum sustainable connection count, or optimal worker sizing.
+The follow-up tests isolate client/server CPU sets in separate containers on one VM;
+their raw timeout counters and local clock discontinuities remain explicit qualifications.

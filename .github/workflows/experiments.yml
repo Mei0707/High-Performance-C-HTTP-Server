@@ -1,0 +1,63 @@
+name: Manual reliability and profiling experiments
+"on":
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Experiment type
+        required: true
+        default: soak
+        type: choice
+        options: [soak, idle, perf]
+      duration_seconds:
+        description: "Seconds: soak <=10800, idle <=300, perf <=60; change when switching modes"
+        required: true
+        default: 1800
+        type: number
+permissions:
+  contents: read
+jobs:
+  experiment:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate duration
+        env:
+          EXPERIMENT_MODE: ${{ inputs.mode }}
+          EXPERIMENT_DURATION: ${{ inputs.duration_seconds }}
+        run: |
+          python3 - <<'PY'
+          import os
+          mode = os.environ['EXPERIMENT_MODE']
+          duration = int(os.environ['EXPERIMENT_DURATION'])
+          assert 1 <= duration <= {'soak':10800, 'idle':300, 'perf':60}[mode], 'duration outside experiment bounds'
+          PY
+      - run: docker build --target dev -t pulsehttp-dev .
+      - run: docker build -f benchmarks/experiments/Dockerfile -t pulsehttp-experiments .
+      - name: Build optimized binaries with symbols
+        run: |
+          docker run --rm -v "$PWD:/src" pulsehttp-experiments sh -c \
+            'cmake -S . -B build-experiment -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPULSE_BUILD_TESTS=OFF -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O2 -g -fno-omit-frame-pointer" && cmake --build build-experiment -j2'
+      - name: Run on disjoint CPU sets
+        env:
+          EXPERIMENT_MODE: ${{ inputs.mode }}
+          EXPERIMENT_DURATION: ${{ inputs.duration_seconds }}
+        run: |
+          python3 - <<'PY'
+          import os, subprocess
+          cores = int(subprocess.check_output(['docker','info','--format','{{.NCPU}}']))
+          assert cores >= 2, 'two CPUs required'
+          split = cores // 2
+          mode = os.environ['EXPERIMENT_MODE']
+          command = ['python3','benchmarks/experiments/run.py',mode,'--build-dir','build-experiment',
+                     '--server-cpus',f'0-{split-1}','--client-cpus',f'{split}-{cores-1}',
+                     '--duration',os.environ['EXPERIMENT_DURATION'],'--output','benchmarks/reports/hosted']
+          if mode == 'soak':
+              command += ['--connections','8','--workers','1','--queue-capacity','16','--overload-connections','128']
+          subprocess.run(command,check=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: experiment-${{ inputs.mode }}
+          path: benchmarks/reports/hosted/

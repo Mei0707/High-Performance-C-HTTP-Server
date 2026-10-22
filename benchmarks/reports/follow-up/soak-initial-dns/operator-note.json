@@ -1,0 +1,4 @@
+{
+  "stopped_unix_ns": 1792696027345980000,
+  "reason": "Stopped after finding repeated DNS lookups in the client. The run recorded an overload request timeout whose I/O stage was not captured; its specific cause is unproven. Retain this as an interrupted run, not a passed 30-minute soak."
+}

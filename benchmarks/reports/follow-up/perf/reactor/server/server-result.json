@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "stopped_by_controller": true,
+  "perf_exit_codes": [
+    -2,
+    -2
+  ],
+  "perf_stop_requested": [
+    true,
+    true
+  ],
+  "perf_report_exit_code": 0
+}

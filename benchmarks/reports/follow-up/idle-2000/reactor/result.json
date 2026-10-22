@@ -1,0 +1,16 @@
+{
+  "client_exit_code": 0,
+  "monitor_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-10-22T18:45:08.356158167Z",
+    "FinishedAt": "2026-10-22T18:45:45.172286754Z"
+  }
+}

@@ -1,0 +1,118 @@
+{"phase_finished": "steady", "elapsed_seconds": 30.03984934699838, "unexpected_errors": 0}
+{"phase_finished": "churn", "elapsed_seconds": 60.043582861020695, "unexpected_errors": 0}
+{"phase_finished": "overload", "elapsed_seconds": 90.90491154202027, "unexpected_errors": 0}
+{"phase_finished": "recovery", "elapsed_seconds": 120.92082718000165, "unexpected_errors": 0}
+{"phase_finished": "steady", "elapsed_seconds": 150.92635111001437, "unexpected_errors": 0}
+{"phase_finished": "churn", "elapsed_seconds": 180.93052358200657, "unexpected_errors": 0}
+{"phase_finished": "overload", "elapsed_seconds": 211.80519597200328, "unexpected_errors": 0}
+{"phase_finished": "recovery", "elapsed_seconds": 241.80924969402258, "unexpected_errors": 0}
+{"phase_finished": "steady", "elapsed_seconds": 271.8154331250116, "unexpected_errors": 0}
+{"phase_finished": "churn", "elapsed_seconds": 301.81914051400963, "unexpected_errors": 0}
+{"phase_finished": "overload", "elapsed_seconds": 332.6625796940061, "unexpected_errors": 0}
+{"phase_finished": "recovery", "elapsed_seconds": 362.6657162080228, "unexpected_errors": 0}
+{"phase_finished": "steady", "elapsed_seconds": 392.66969826302375, "unexpected_errors": 0}
+{"phase_finished": "churn", "elapsed_seconds": 422.6751136930252, "unexpected_errors": 0}
+{"phase_finished": "overload", "elapsed_seconds": 456.9754513759981, "unexpected_errors": 1}
+{"phase_finished": "recovery", "elapsed_seconds": 486.9936279730173, "unexpected_errors": 1}
+{"phase_finished": "steady", "elapsed_seconds": 517.0063076540246, "unexpected_errors": 1}
+{"phase_finished": "churn", "elapsed_seconds": 547.0099466670072, "unexpected_errors": 1}
+{"phase_finished": "overload", "elapsed_seconds": 577.8815730560164, "unexpected_errors": 1}
+{"phase_finished": "recovery", "elapsed_seconds": 607.8963100690162, "unexpected_errors": 1}
+{"phase_finished": "steady", "elapsed_seconds": 637.9138325420208, "unexpected_errors": 1}
+{"phase_finished": "churn", "elapsed_seconds": 667.9285678470042, "unexpected_errors": 1}
+{"phase_finished": "overload", "elapsed_seconds": 698.7847893610015, "unexpected_errors": 2}
+{"phase_finished": "recovery", "elapsed_seconds": 728.7886681240052, "unexpected_errors": 2}
+{"phase_finished": "steady", "elapsed_seconds": 758.80149088701, "unexpected_errors": 2}
+{"phase_finished": "churn", "elapsed_seconds": 788.823806526023, "unexpected_errors": 2}
+{"phase_finished": "overload", "elapsed_seconds": 819.6797642490128, "unexpected_errors": 2}
+{"phase_finished": "recovery", "elapsed_seconds": 849.6948817630182, "unexpected_errors": 2}
+{"phase_finished": "steady", "elapsed_seconds": 879.6986533190066, "unexpected_errors": 2}
+{"phase_finished": "churn", "elapsed_seconds": 909.7038612910255, "unexpected_errors": 2}
+{"phase_finished": "overload", "elapsed_seconds": 940.5526599720179, "unexpected_errors": 2}
+{"phase_finished": "recovery", "elapsed_seconds": 970.5692635270243, "unexpected_errors": 2}
+{"phase_finished": "steady", "elapsed_seconds": 1000.5751929990074, "unexpected_errors": 2}
+{"phase_finished": "churn", "elapsed_seconds": 1030.5816522630048, "unexpected_errors": 2}
+{"phase_finished": "overload", "elapsed_seconds": 1061.4332363190188, "unexpected_errors": 2}
+{"phase_finished": "recovery", "elapsed_seconds": 1091.4491513740213, "unexpected_errors": 2}
+{"phase_finished": "steady", "elapsed_seconds": 1121.4645216790086, "unexpected_errors": 2}
+{"phase_finished": "churn", "elapsed_seconds": 1151.4819394850056, "unexpected_errors": 2}
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/src/benchmarks/experiments/client.py", line 201, in soak
+    phase_end = min(end, time.monotonic() + args.phase_seconds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/tasks.py", line 665, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/src/benchmarks/experiments/client.py", line 247, in <module>
+    report["end_unix_ns"] = time.time_ns()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/src/benchmarks/experiments/client.py", line 201, in soak
+    phase_end = min(end, time.monotonic() + args.phase_seconds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/tasks.py", line 665, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/src/benchmarks/experiments/client.py", line 247, in <module>
+    report["end_unix_ns"] = time.time_ns()
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/src/benchmarks/experiments/client.py", line 188, in worker
+    output.mkdir(parents=True, exist_ok=True)
+                                     ^^^^^^^^^
+  File "/src/benchmarks/experiments/client.py", line 23, in get
+    args.dns_resolution_ms = (time.perf_counter() - before) * 1000
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/src/benchmarks/experiments/client.py", line 30, in _get
+    self.stage = "idle"
+                        
+  File "/usr/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 1149, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 1182, in _create_connection_transport
+    await waiter
+asyncio.exceptions.CancelledError

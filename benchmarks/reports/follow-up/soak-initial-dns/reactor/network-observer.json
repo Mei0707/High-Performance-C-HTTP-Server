@@ -1,0 +1,10 @@
+{
+  "started_unix_ns": 1792695591879333000,
+  "interval_seconds": 10,
+  "collector_sha256": "63ae0f7d20a3f556f4d7674ac559e362ff092cb84ee6cbbfb2b82e62150289cc",
+  "targets": {
+    "server": "pulse-experiment-8602e3c7f4-server",
+    "client": "pulse-experiment-8602e3c7f4-client"
+  },
+  "note": "Counters are cumulative within each container network namespace; observation may start after the workload."
+}

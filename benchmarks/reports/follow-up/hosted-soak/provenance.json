@@ -1,0 +1,98 @@
+{
+  "observed_at": "2026-10-22 20:20:32 UTC",
+  "run_url": "https://github.com/Mei0707/High-Performance-C-HTTP-Server/actions/runs/39843335754",
+  "jobs": [
+    {
+      "id": 120049967404,
+      "name": "experiment",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39843335754,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Validate duration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run docker build --target dev -t pulsehttp-dev .",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run docker build -f benchmarks/experiments/Dockerfile -t pulsehttp-experiments .",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Build optimized binaries with symbols",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Run on disjoint CPU sets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12455548943,
+      "name": "experiment-soak",
+      "size_in_bytes": 307017,
+      "url": "https://api.github.com/repos/Mei0707/High-Performance-C-HTTP-Server/actions/artifacts/12455548943",
+      "archive_download_url": "https://api.github.com/repos/Mei0707/High-Performance-C-HTTP-Server/actions/artifacts/12455548943/zip",
+      "expired": false,
+      "created_at": "2026-10-22T20:19:41Z",
+      "expires_at": "2027-01-20T19:48:44Z",
+      "updated_at": "2026-10-22T20:19:41Z",
+      "digest": "sha256:9d4491f44cc35e0f2bb1378323f691c86ffc324f102625bb9c1b848ad0abaa0d",
+      "workflow_run": {
+        "id": 39843335754,
+        "repository_id": 1430099982,
+        "head_repository_id": 1430099982,
+        "head_branch": "experiment/soak-30min-20261022",
+        "head_sha": "6f24c63b1869b7b5780fbca12e6f0c4642bc356e"
+      }
+    }
+  ],
+  "downloaded_archive_sha256": "9d4491f44cc35e0f2bb1378323f691c86ffc324f102625bb9c1b848ad0abaa0d"
+}

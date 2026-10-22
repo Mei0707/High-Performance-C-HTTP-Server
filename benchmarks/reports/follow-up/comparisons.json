@@ -1461,5 +1461,580 @@
     ],
     "recovery_rss_slope_kib_per_minute": 1.3161780318705827,
     "assertions_passed": false
+  },
+  {
+    "case": "benchmarks/reports/follow-up/hosted-soak/reactor",
+    "mode": "soak",
+    "architecture": "reactor",
+    "initial_fds": 8,
+    "final_fds": 8,
+    "server_affinity": [
+      0,
+      1
+    ],
+    "client_affinity": [
+      2,
+      3
+    ],
+    "clock_discontinuities": [],
+    "descriptor_recovery": true,
+    "uninterrupted_clock": true,
+    "elapsed_seconds": 1800.0008548829999,
+    "completed": true,
+    "phase_totals": {
+      "steady": {
+        "200": 12472460
+      },
+      "churn": {
+        "200": 3097849
+      },
+      "overload": {
+        "503": 3487034,
+        "200": 14087
+      },
+      "recovery": {
+        "200": 12106664
+      }
+    },
+    "unexpected_errors": 0,
+    "client_peak_rss_kib": 25708,
+    "recovery_rss": [
+      {
+        "unix_ns": 1792698669975579689,
+        "monotonic_ns": 170503066452,
+        "rss_kib": 4136,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792698674980092818,
+        "monotonic_ns": 175507579728,
+        "rss_kib": 4136,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792698679984669766,
+        "monotonic_ns": 180512156171,
+        "rss_kib": 4136,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792698684989160760,
+        "monotonic_ns": 185516647395,
+        "rss_kib": 4136,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792698689993464921,
+        "monotonic_ns": 190520951581,
+        "rss_kib": 4136,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792698694998253813,
+        "monotonic_ns": 195525740289,
+        "rss_kib": 4136,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792698791096535261,
+        "monotonic_ns": 291624022001,
+        "rss_kib": 4140,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792698796101365187,
+        "monotonic_ns": 296628851799,
+        "rss_kib": 4140,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792698801105995537,
+        "monotonic_ns": 301633482179,
+        "rss_kib": 4140,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792698806110835924,
+        "monotonic_ns": 306638322411,
+        "rss_kib": 4140,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792698811115297641,
+        "monotonic_ns": 311642784170,
+        "rss_kib": 4140,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792698816120195901,
+        "monotonic_ns": 316647682828,
+        "rss_kib": 4140,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792698911214606836,
+        "monotonic_ns": 411742093749,
+        "rss_kib": 4152,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792698916219001148,
+        "monotonic_ns": 416746487705,
+        "rss_kib": 4152,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792698921223559005,
+        "monotonic_ns": 421751045511,
+        "rss_kib": 4152,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792698926228363870,
+        "monotonic_ns": 426755850405,
+        "rss_kib": 4152,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792698931232958038,
+        "monotonic_ns": 431760444771,
+        "rss_kib": 4152,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792698936237715566,
+        "monotonic_ns": 436765202435,
+        "rss_kib": 4152,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792699032334273001,
+        "monotonic_ns": 532861759562,
+        "rss_kib": 4152,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792699036337982834,
+        "monotonic_ns": 536865469512,
+        "rss_kib": 4152.0,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792699041342623183,
+        "monotonic_ns": 541870109682,
+        "rss_kib": 4152,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792699046347334519,
+        "monotonic_ns": 546874820796,
+        "rss_kib": 4152,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792699051352104003,
+        "monotonic_ns": 551879590608,
+        "rss_kib": 4152,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792699056356615669,
+        "monotonic_ns": 556884102541,
+        "rss_kib": 4152,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792699152450381841,
+        "monotonic_ns": 652977868510,
+        "rss_kib": 4156,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792699157455143452,
+        "monotonic_ns": 657982629975,
+        "rss_kib": 4156,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792699162459917071,
+        "monotonic_ns": 662987403732,
+        "rss_kib": 4156,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792699167465117438,
+        "monotonic_ns": 667992604174,
+        "rss_kib": 4156,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792699172469592397,
+        "monotonic_ns": 672997078975,
+        "rss_kib": 4156,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792699177474581699,
+        "monotonic_ns": 678002068189,
+        "rss_kib": 4156,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792699272572252914,
+        "monotonic_ns": 773099739413,
+        "rss_kib": 4156,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792699277576893941,
+        "monotonic_ns": 778104380623,
+        "rss_kib": 4156,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792699282581486870,
+        "monotonic_ns": 783108973371,
+        "rss_kib": 4156,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792699287586342911,
+        "monotonic_ns": 788113829352,
+        "rss_kib": 4156,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792699292591196453,
+        "monotonic_ns": 793118682859,
+        "rss_kib": 4156,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792699297595858808,
+        "monotonic_ns": 798123345748,
+        "rss_kib": 4156,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792699393690789782,
+        "monotonic_ns": 894218276304,
+        "rss_kib": 4156,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792699398695563368,
+        "monotonic_ns": 899223050050,
+        "rss_kib": 4156,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792699403700176300,
+        "monotonic_ns": 904227662968,
+        "rss_kib": 4156,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792699408704800983,
+        "monotonic_ns": 909232287474,
+        "rss_kib": 4156,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792699413709627243,
+        "monotonic_ns": 914237113964,
+        "rss_kib": 4156,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792699418714454044,
+        "monotonic_ns": 919241940462,
+        "rss_kib": 4156,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792699513811050493,
+        "monotonic_ns": 1014338536996,
+        "rss_kib": 4156,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792699518815502566,
+        "monotonic_ns": 1019342989574,
+        "rss_kib": 4156,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792699523819785968,
+        "monotonic_ns": 1024347272622,
+        "rss_kib": 4156,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792699528824229293,
+        "monotonic_ns": 1029351715942,
+        "rss_kib": 4156,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792699533828604314,
+        "monotonic_ns": 1034356090930,
+        "rss_kib": 4156,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792699538833291370,
+        "monotonic_ns": 1039360778058,
+        "rss_kib": 4156,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792699634929410717,
+        "monotonic_ns": 1135456897153,
+        "rss_kib": 4156,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792699639933684675,
+        "monotonic_ns": 1140461171551,
+        "rss_kib": 4156,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792699644938081941,
+        "monotonic_ns": 1145465568654,
+        "rss_kib": 4156,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792699649942560546,
+        "monotonic_ns": 1150470047185,
+        "rss_kib": 4156,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792699654947040062,
+        "monotonic_ns": 1155474526603,
+        "rss_kib": 4156,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792699659951867740,
+        "monotonic_ns": 1160479354359,
+        "rss_kib": 4156,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792699755042378920,
+        "monotonic_ns": 1255569865628,
+        "rss_kib": 4156,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792699760046953913,
+        "monotonic_ns": 1260574440468,
+        "rss_kib": 4156,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792699765051601360,
+        "monotonic_ns": 1265579088206,
+        "rss_kib": 4156,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792699770056150108,
+        "monotonic_ns": 1270583636519,
+        "rss_kib": 4156,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792699775060312106,
+        "monotonic_ns": 1275587798918,
+        "rss_kib": 4156,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792699780064716811,
+        "monotonic_ns": 1280592203259,
+        "rss_kib": 4156,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792699875156953857,
+        "monotonic_ns": 1375684440796,
+        "rss_kib": 4156,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792699880161645573,
+        "monotonic_ns": 1380689132036,
+        "rss_kib": 4156,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792699885166184426,
+        "monotonic_ns": 1385693671363,
+        "rss_kib": 4156,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792699890170990235,
+        "monotonic_ns": 1390698477289,
+        "rss_kib": 4156,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792699895175580819,
+        "monotonic_ns": 1395703068235,
+        "rss_kib": 4156,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792699900180113261,
+        "monotonic_ns": 1400707599903,
+        "rss_kib": 4156,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792699996274106155,
+        "monotonic_ns": 1496801596516,
+        "rss_kib": 4156,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792700001278625739,
+        "monotonic_ns": 1501806112617,
+        "rss_kib": 4156,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792700006283433473,
+        "monotonic_ns": 1506810919964,
+        "rss_kib": 4156,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792700011287858571,
+        "monotonic_ns": 1511815345086,
+        "rss_kib": 4156,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792700016292635353,
+        "monotonic_ns": 1516820121666,
+        "rss_kib": 4156,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792700021296924356,
+        "monotonic_ns": 1521824410958,
+        "rss_kib": 4156,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792700116388216277,
+        "monotonic_ns": 1616915703147,
+        "rss_kib": 4156,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792700121392711495,
+        "monotonic_ns": 1621920198133,
+        "rss_kib": 4156,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792700126397342905,
+        "monotonic_ns": 1626924829211,
+        "rss_kib": 4156,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792700131401871464,
+        "monotonic_ns": 1631929357792,
+        "rss_kib": 4156,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792700136406222218,
+        "monotonic_ns": 1636933708833,
+        "rss_kib": 4156,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792700141410826047,
+        "monotonic_ns": 1641938317367,
+        "rss_kib": 4156,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792700237505480371,
+        "monotonic_ns": 1738032967031,
+        "rss_kib": 4160,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792700242509626046,
+        "monotonic_ns": 1743037112980,
+        "rss_kib": 4160,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792700247514549104,
+        "monotonic_ns": 1748042035534,
+        "rss_kib": 4160,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792700252519292750,
+        "monotonic_ns": 1753046779250,
+        "rss_kib": 4160,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792700257523896785,
+        "monotonic_ns": 1758051387624,
+        "rss_kib": 4160,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792700262528605576,
+        "monotonic_ns": 1763056092216,
+        "rss_kib": 4160,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792700357624566339,
+        "monotonic_ns": 1858152052866,
+        "rss_kib": 4160,
+        "cycle": 14
+      },
+      {
+        "unix_ns": 1792700362629279378,
+        "monotonic_ns": 1863156766265,
+        "rss_kib": 4160,
+        "cycle": 14
+      },
+      {
+        "unix_ns": 1792700367633752196,
+        "monotonic_ns": 1868161238652,
+        "rss_kib": 4160,
+        "cycle": 14
+      },
+      {
+        "unix_ns": 1792700372638442244,
+        "monotonic_ns": 1873165928603,
+        "rss_kib": 4160,
+        "cycle": 14
+      },
+      {
+        "unix_ns": 1792700374640274021,
+        "monotonic_ns": 1875167760467,
+        "rss_kib": 4160.0,
+        "cycle": 14
+      }
+    ],
+    "recovery_rss_slope_kib_per_minute": 0.42106387488321473,
+    "assertions_passed": true
   }
 ]

@@ -52,7 +52,8 @@ callback, and records HTTP outcomes and socket-error counters separately. Raw to
 and p50/p95/p99 are retained. Server CPU comes from independent /proc process samples;
 client CPU comes from waited child resource usage. These are separate containers and CPU
 sets on **one VM**, not independent physical machines: memory, cache, kernel, network and
-the Docker hypervisor remain shared. The result can still be limited by the client.
+the Docker hypervisor remain shared. Affinity also does not exclude unrelated workloads
+from those CPUs. The result can still be limited by the client.
 
 Soak phases rotate steady keep-alive traffic, connection churn, compute overload and
 recovery. Only HTTP 503 during the overload phase is expected; other errors make the run

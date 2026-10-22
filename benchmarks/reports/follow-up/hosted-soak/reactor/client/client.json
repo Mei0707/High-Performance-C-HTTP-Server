@@ -1,0 +1,84 @@
+{
+  "environment": {
+    "unix_ns": 1792698575110541359,
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "affinity": [
+      2,
+      3
+    ],
+    "logical_cpus": 4,
+    "cpuinfo": "processor\t: 0\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 173\nmodel name\t: Intel(R) Xeon(R) 6973P-C\nstepping\t: 1\nmicrocode\t: 0xffffffff\ncpu MHz\t\t: 4160.130\ncache size\t: 491520 KB\nphysical id\t: 0\nsiblings\t: 4\ncore id\t\t: 0\ncpu cores\t: 2\napicid\t\t: 0\ninitial apicid\t: 0\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 36\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves user_shstk avx_vnni avx512_bf16 vnmi avx512vbmi umip waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid cldemote movdiri movdir64b fsrm serialize tsxldtrk ibt amx_bf16 avx512_fp16 amx_tile amx_int8 arch_capabilities\nvmx flags\t: vnmi invvpid ept_x_only ept_ad ept_1gb ept_5level tsc_offset vtpr ept vpid unrestricted_guest ept_mode_based_exec tsc_scaling usr_wait_pause\nbugs\t\t: spectre_v1 spectre_v2 spec_store_bypass swapgs retbleed bhi spectre_v2_user its\nbogomips\t: 5199.99\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 48 bits physical, 57 bits virtual\npower management:\n\nprocessor\t: 1\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 173\nmodel name\t: Intel(R) Xeon(R) 6973P-C\nstepping\t: 1\nmicrocode\t: 0xffffffff\ncpu MHz\t\t: 4182.730\ncache size\t: 491520 KB\nphysical id\t: 0\nsiblings\t: 4\ncore id\t\t: 0\ncpu cores\t: 2\napicid\t\t: 1\ninitial apicid\t: 1\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 36\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves user_shstk avx_vnni avx512_bf16 vnmi avx512vbmi umip waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid cldemote movdiri movdir64b fsrm serialize tsxldtrk ibt amx_bf16 avx512_fp16 amx_tile amx_int8 arch_capabilities\nvmx flags\t: vnmi invvpid ept_x_only ept_ad ept_1gb ept_5level tsc_offset vtpr ept vpid unrestricted_guest ept_mode_based_exec tsc_scaling usr_wait_pause\nbugs\t\t: spectre_v1 spectre_v2 spec_store_bypass swapgs retbleed bhi spectre_v2_user its\nbogomips\t: 5199.99\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 48 bits physical, 57 bits virtual\npower management:\n\nprocessor\t: 2\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 173\nmodel name\t: Intel(R) Xeon(R) 6973P-C\nstepping\t: 1\nmicrocode\t: 0xffffffff\ncpu MHz\t\t: 4189.482\ncache size\t: 491520 KB\nphysical id\t: 0\nsiblings\t: 4\ncore id\t\t: 1\ncpu cores\t: 2\napicid\t\t: 2\ninitial apicid\t: 2\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 36\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves user_shstk avx_vnni avx512_bf16 vnmi avx512vbmi umip waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid cldemote movdiri movdir64b fsrm serialize tsxldtrk ibt amx_bf16 avx512_fp16 amx_tile amx_int8 arch_capabilities\nvmx flags\t: vnmi invvpid ept_x_only ept_ad ept_1gb ept_5level tsc_offset vtpr ept vpid unrestricted_guest ept_mode_based_exec tsc_scaling usr_wait_pause\nbugs\t\t: spectre_v1 spectre_v2 spec_store_bypass swapgs retbleed bhi spectre_v2_user its\nbogomips\t: 5199.99\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 48 bits physical, 57 bits virtual\npower management:\n\nprocessor\t: 3\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 173\nmodel name\t: Intel(R) Xeon(R) 6973P-C\nstepping\t: 1\nmicrocode\t: 0xffffffff\ncpu MHz\t\t: 4203.076\ncache size\t: 491520 KB\nphysical id\t: 0\nsiblings\t: 4\ncore id\t\t: 1\ncpu cores\t: 2\napicid\t\t: 3\ninitial apicid\t: 3\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 36\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves user_shstk avx_vnni avx512_bf16 vnmi avx512vbmi umip waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid cldemote movdiri movdir64b fsrm serialize tsxldtrk ibt amx_bf16 avx512_fp16 amx_tile amx_int8 arch_capabilities\nvmx flags\t: vnmi invvpid ept_x_only ept_ad ept_1gb ept_5level tsc_offset vtpr ept vpid unrestricted_guest ept_mode_based_exec tsc_scaling usr_wait_pause\nbugs\t\t: spectre_v1 spectre_v2 spec_store_bypass swapgs retbleed bhi spectre_v2_user its\nbogomips\t: 5199.99\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 48 bits physical, 57 bits virtual\npower management:",
+    "meminfo": "MemTotal:       16366512 kB\nMemFree:        11253172 kB\nMemAvailable:   14558028 kB\nBuffers:          118696 kB\nCached:          3411704 kB\nSwapCached:            0 kB\nActive:           881700 kB\nInactive:        3004080 kB\nActive(anon):     409648 kB\nInactive(anon):        0 kB\nActive(file):     472052 kB\nInactive(file):  3004080 kB\nUnevictable:       46728 kB\nMlocked:           43656 kB\nSwapTotal:       3145724 kB\nSwapFree:        3145724 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:              2536 kB\nWriteback:             0 kB\nAnonPages:        402240 kB\nMapped:           366688 kB\nShmem:             45536 kB\nKReclaimable:     174660 kB\nSlab:             268752 kB\nSReclaimable:     174660 kB\nSUnreclaim:        94092 kB\nKernelStack:        4900 kB\nPageTables:         7876 kB\nSecPageTables:         0 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    11328980 kB\nCommitted_AS:    2666568 kB\nVmallocTotal:   13743895347199 kB\nVmallocUsed:       39772 kB\nVmallocChunk:          0 kB\nPercpu:             2384 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:         0 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:              0 kB\nCmaFree:         1464320 kB\nUnaccepted:            0 kB\nBalloon:               0 kB\nGPUActive:             0 kB\nGPUReclaim:            0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:      126080 kB\nDirectMap2M:     6160384 kB\nDirectMap1G:    12582912 kB",
+    "fd_limit": [
+      65536,
+      65536
+    ],
+    "pids_max": "256",
+    "memory_max": "536870912",
+    "cpu_max": "max 100000",
+    "commit": "6f24c63b1869b7b5780fbca12e6f0c4642bc356e",
+    "experiment_source_sha256": "a5a68d9623ea7e84c18ef2f826b032a14014b9c66aa1f1b1171eef96137c5b9a"
+  },
+  "arguments": {
+    "mode": "soak",
+    "host": "server",
+    "port": 8080,
+    "output": "/results",
+    "connections": 8,
+    "duration": 1800.0,
+    "dial_parallel": 32,
+    "timeout": 5,
+    "phase_seconds": 30.0,
+    "window_seconds": 5,
+    "overload_connections": 128,
+    "resolved_host": "172.18.0.2",
+    "dns_resolution_ms": 2.6861240000073394
+  },
+  "bucket_upper_bounds_ms": [
+    0.1,
+    0.25,
+    0.5,
+    1,
+    2,
+    3,
+    5,
+    10,
+    20,
+    30,
+    50,
+    75,
+    100,
+    200,
+    300,
+    500,
+    1000,
+    2000,
+    3000,
+    5000,
+    null
+  ],
+  "start_unix_ns": 1792698575114640386,
+  "start_monotonic_ns": 75636650139,
+  "phase_totals": {
+    "steady": {
+      "200": 12472460
+    },
+    "churn": {
+      "200": 3097849
+    },
+    "overload": {
+      "503": 3487034,
+      "200": 14087
+    },
+    "recovery": {
+      "200": 12106664
+    }
+  },
+  "unexpected_errors": 0,
+  "elapsed_seconds": 1800.0008548829999,
+  "client_peak_rss_kib": 25708,
+  "end_unix_ns": 1792700375110739942,
+  "end_monotonic_ns": 1875638226396,
+  "completed": true
+}

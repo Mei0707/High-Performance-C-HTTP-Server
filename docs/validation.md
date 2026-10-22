@@ -68,3 +68,11 @@ The [follow-up report](../benchmarks/reports/follow-up/README.md) retains separa
 benchmarks, 2,000 mostly idle connections, Linux perf traces and soak outcomes, including
 failed criteria and clock qualifications. These experiments use CPU-separated containers;
 independent physical client/server hosts remain unmeasured.
+
+The independent [hosted soak](https://github.com/Mei0707/High-Performance-C-HTTP-Server/actions/runs/39843335754)
+completed 30 minutes with zero unexpected errors, 27,691,060 HTTP 200 responses and
+3,487,034 expected overload rejections. Descriptors returned to 8; RSS ranged from
+3.93 to 4.06 MiB, and no clock discontinuities were detected. The local soak's 12
+header-read timeouts and clock qualifications remain separate evidence in the report.
+All five CI jobs also passed for the subsequent reporting commit
+[`58698af`](https://github.com/Mei0707/High-Performance-C-HTTP-Server/actions/runs/39845553623).

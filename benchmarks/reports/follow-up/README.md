@@ -41,11 +41,13 @@ histogram. The counts can overlap, and its p99 excludes such overflow values. Se
 No root cause is established for those outliers. This is evidence of high completed
 throughput and a reliability qualification, rather than an error-free capacity claim.
 
-The baseline uses nearly all four reserved server cores, while the reactor consumes
+The baseline uses nearly all four assigned server cores, while the reactor consumes
 about 1.2. The measurements expose a constraint in the reactor path for tiny handlers.
 The baseline client also approaches its four-core budget, so a stronger load generator
-would be needed to establish its ultimate capacity. This topology shares memory, cache,
-network and a hypervisor; it is not a measurement across independent physical hosts.
+would be needed to establish its ultimate capacity. CPU affinity separates the two
+measured processes but does not exclude unrelated host workloads. This topology shares
+memory, cache, network and a hypervisor; it is not a measurement across independent
+physical hosts.
 
 Raw results: [reactor client](dedicated/reactor/client/client.json),
 [baseline client](dedicated/baseline/client/client.json), and their
@@ -159,12 +161,28 @@ Raw local results: [client outcome](soak-30min/reactor/client/client.json),
 [clock audit](soak-30min/reactor/clock-audit.json), and
 [server metric diagnostic](soak-30min/reactor/metrics-diagnostic.txt).
 
-An independent [hosted Linux soak](https://github.com/Mei0707/High-Performance-C-HTTP-Server/actions/runs/39843335754)
-is running with the same phase pattern, queue and connection counts. It uses an optimized
-O2 build with symbols on the hosted runner, with half the available CPUs reserved for
-the server and half for the client. Its branch adds only a branch-scoped push trigger to
-the optional experiment workflow; main is unchanged. Its continuous-duration result will
-be added after the workflow finishes and its artifacts are inspected.
+The independent [hosted Linux soak](https://github.com/Mei0707/High-Performance-C-HTTP-Server/actions/runs/39843335754)
+**passed** all workload, controller, clock and descriptor-recovery checks. It completed
+1,800.001 seconds with **27,691,060 HTTP 200 responses**, **3,487,034 expected overload
+HTTP 503 responses**, and **zero unexpected errors**. Every streamed window agrees with
+the final phase totals. RSS ranged from 4,024 to 4,160 KiB (3.93–4.06 MiB), descriptors
+returned from 8 to 8, and no wall/monotonic discontinuity over one second was detected.
+Cgroup memory ranged from 10.80 to 20.15 MiB, again including monitoring and file-cache
+charges rather than only the server's resident pages.
+
+This run used an x86_64 hosted Linux runner: server CPUs 0–1, client CPUs 2–3,
+an optimized O2 build with symbols, and the same phase pattern, queue and connection
+counts as the local soak. Its different CPU allocation, platform and environment mean
+it does not establish the cause of the local timeouts. Its temporary branch adds only
+a branch-scoped push trigger to the optional experiment workflow. The full artifact ZIP
+matched GitHub's recorded SHA-256 before extraction; see [provenance](hosted-soak/provenance.json).
+
+![Hosted continuous soak resources](hosted-soak-resources.svg)
+
+Raw hosted results: [client outcome](hosted-soak/reactor/client/client.json),
+[resource samples](hosted-soak/reactor/server/server-samples.jsonl),
+[client windows](hosted-soak/reactor/client/client-windows.jsonl), and
+[clock audit](hosted-soak/reactor/clock-audit.json).
 
 Reproduction commands and precise metric scopes are in the
 [experiment guide](../../../docs/experiments.md). Longer multi-hour soaks, native Linux

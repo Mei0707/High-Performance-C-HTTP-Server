@@ -23,41 +23,57 @@ def main():
     client = json.loads((args.case / "client/client.json").read_text())
     samples = read_jsonl(args.case / "server/server-samples.jsonl")
     windows = read_jsonl(args.case / "client/client-windows.jsonl")
-    start = client["start_unix_ns"]
-    end = client.get("end_unix_ns", samples[-1]["unix_ns"])
-    samples = [s for s in samples if start <= s["unix_ns"] <= end]
+    all_samples = samples
+    def mono_from_wall(value):
+        anchor = min(all_samples,key=lambda s:abs(s["unix_ns"]-value))
+        return anchor["monotonic_ns"] + value - anchor["unix_ns"]
+    start = client.get("start_monotonic_ns",mono_from_wall(client["start_unix_ns"]))
+    end = client.get("end_monotonic_ns")
+    if end is None:
+        end = start + int(client["elapsed_seconds"]*1e9) if client.get("completed") else samples[-1]["monotonic_ns"]
+    samples = [s for s in samples if start <= s["monotonic_ns"] <= end]
     if len(samples) < 2:
         parser.error("at least two server samples are required")
-    x = [(s["unix_ns"] - start) / 60e9 for s in samples]
+    x = [(s["monotonic_ns"] - start) / 60e9 for s in samples]
     rss = [s["rss_kib"] / 1024 for s in samples]
     fds = [s["fds"] for s in samples]
+    cgroup = [s.get("cgroup_memory_bytes",0) / 1048576 for s in samples]
     cpu = [(b["cpu_seconds"] - a["cpu_seconds"]) / ((b["monotonic_ns"]-a["monotonic_ns"])/1e9)
            for a,b in zip(samples,samples[1:])]
     colors = {"steady":"#2f8f4e", "churn":"#386cb0", "overload":"#d54b3e", "recovery":"#e8b330"}
+    jumps = [b for a,b in zip(all_samples,all_samples[1:])
+             if abs((b["unix_ns"]-a["unix_ns"]) - (b["monotonic_ns"]-a["monotonic_ns"])) > 1e9]
     with plt.rc_context({"font.size":10, "axes.spines.top":False, "axes.spines.right":False}):
-        fig, axes = plt.subplots(3,1,sharex=True,figsize=(11,7),layout="constrained")
+        fig, axes = plt.subplots(4,1,sharex=True,figsize=(11,9),layout="constrained")
         for axis in axes:
             for w in windows:
-                axis.axvspan((w["start_unix_ns"]-start)/60e9,(w["end_unix_ns"]-start)/60e9,
+                window_start = w.get("start_monotonic_ns",mono_from_wall(w["start_unix_ns"]))
+                window_end = w.get("end_monotonic_ns",mono_from_wall(w["end_unix_ns"]))
+                axis.axvspan((window_start-start)/60e9,(window_end-start)/60e9,
                              color=colors[w["phase"]],alpha=.10,linewidth=0)
             axis.grid(axis="y",alpha=.22)
         axes[0].plot(x,rss,color="#233b65",linewidth=1.3)
         axes[0].set_ylabel("Server RSS (MiB)")
         axes[0].set_ylim(0,max(rss)*1.3)
-        axes[1].plot(x,fds,color="#233b65",linewidth=1.1)
-        axes[1].set_ylabel("Open descriptors")
+        axes[1].plot(x,cgroup,color="#233b65",linewidth=1.1)
+        axes[1].set_ylabel("Cgroup memory (MiB)")
         axes[1].set_ylim(bottom=0)
-        axes[2].plot(x[1:],cpu,color="#233b65",linewidth=1.1)
-        axes[2].set_ylabel("Server CPU cores")
-        axes[2].set_ylim(0,max(1.2,max(cpu)*1.1))
-        axes[2].set_xlabel("Elapsed workload time (minutes)")
-        axes[2].set_xlim(0,(end-start)/60e9)
-        title = f"{(end-start)/60e9:.1f}-minute soak: server resource samples"
+        axes[2].plot(x,fds,color="#233b65",linewidth=1.1)
+        axes[2].set_ylabel("Open descriptors")
+        axes[2].set_ylim(bottom=0)
+        axes[3].plot(x[1:],cpu,color="#233b65",linewidth=1.1)
+        axes[3].set_ylabel("Server CPU cores")
+        axes[3].set_ylim(0,max(1.2,max(cpu)*1.1))
+        axes[3].set_xlabel("Elapsed workload time (minutes)")
+        axes[3].set_xlim(0,(end-start)/60e9)
+        title = f"{(end-start)/60e9:.1f} active-minute soak: server resource samples"
         if not client.get("completed"):
             title += " (partial observation)"
         axes[0].set_title(title,loc="left",pad=28)
         axes[0].legend(handles=[Patch(facecolor=c,alpha=.35,label=name.capitalize()) for name,c in colors.items()],
                        loc="lower left",bbox_to_anchor=(0,1.005),ncol=4,frameon=False)
+        if jumps:
+            axes[0].text(1,1.05,f"{len(jumps)} wall-clock discontinuities recorded",transform=axes[0].transAxes,ha="right",fontsize=8)
         args.output.parent.mkdir(parents=True,exist_ok=True)
         fig.savefig(args.output.with_suffix(".svg"))
         fig.savefig(args.output.with_suffix(".png"),dpi=150)

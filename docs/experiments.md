@@ -17,7 +17,9 @@ uses O2 with symbols and frame pointers; the local Release comparisons below use
 These experiments require Linux containers and at least two Docker CPUs. On the ten-CPU
 development VM, CPUs 0–3 belong to the server and 4–7 to the client. Choose valid disjoint
 sets on another host. The harness rejects overlaps and records each process's actual
-affinity. All container/network names are unique and cleaned up after the case.
+affinity. On macOS it acquires an idle-sleep assertion only for the controller's lifetime;
+it makes no persistent power-setting changes. All container/network names are unique and
+cleaned up after the case.
 
 ```sh
 docker build --target dev -t pulsehttp-dev .
@@ -101,7 +103,10 @@ Telemetry includes RSS, reserved virtual memory, threads, FDs, process CPU and c
 memory. RSS excludes kernel stacks; cgroup memory also includes the Python monitor,
 kernel allocations and charged file cache. CPU percentages use actual monotonic sample
 intervals and can exceed 100 for multiple cores. At least two samples must fall inside
-the workload window. For measurements across physical hosts, synchronize clocks or align
+the workload window. New records align client/server intervals with the shared kernel's
+monotonic clock and retain wall-clock timestamps separately. Clock discontinuities are
+reported; wrk runs with a material wall/monotonic duration discrepancy fail validation.
+For measurements across physical hosts, synchronize clocks or align
 telemetry through an explicit remote orchestration protocol.
 
 Tool references: [wrk scripting API](https://github.com/wg/wrk/blob/master/SCRIPTING)

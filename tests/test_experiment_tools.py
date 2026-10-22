@@ -14,9 +14,18 @@ from client import Histogram, Session, Window, resolve_target
 from run import cpu_set
 from common import profile_valid
 from network_watch import parse_counters
+from report import resources
 
 
 class MeasurementTests(unittest.TestCase):
+    def test_wall_clock_jump_does_not_dilute_cpu_measurement(self):
+        fields = {"rss_kib":1,"vms_kib":2,"threads":1,"fds":3}
+        points = [{**fields,"unix_ns":0,"monotonic_ns":0,"cpu_seconds":0},
+                  {**fields,"unix_ns":901_000_000_000,"monotonic_ns":1_000_000_000,"cpu_seconds":.5}]
+        result = resources(points,0,1_000_000_000,"monotonic_ns")
+        self.assertEqual(result["sampled_seconds"],1)
+        self.assertEqual(result["cpu_percent"],50)
+
     def test_network_counters_keep_namespaces_and_detect_bad_rows(self):
         result = parse_counters("Tcp: ActiveOpens RetransSegs\nTcp: 10 2\nTcpExt: TCPTimeouts\nTcpExt: 1\n")
         self.assertEqual(result, {"Tcp:ActiveOpens":10,"Tcp:RetransSegs":2,"TcpExt:TCPTimeouts":1})

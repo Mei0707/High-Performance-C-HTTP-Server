@@ -146,7 +146,8 @@ async def idle(args):
         setup_start = time.monotonic()
         await asyncio.gather(*(establish() for _ in range(args.connections)))
         report.update({"setup_seconds": time.monotonic() - setup_start, "established": len(sessions),
-                       "hold_start_unix_ns": time.time_ns(), "hold_seconds": args.duration})
+                       "hold_start_unix_ns": time.time_ns(), "hold_start_monotonic_ns": time.monotonic_ns(),
+                       "hold_seconds": args.duration})
         end = time.monotonic() + args.duration
         active = sessions[:max(1, int(len(sessions) * .01))]
         report["sparse_active_connections"] = len(active)
@@ -161,6 +162,7 @@ async def idle(args):
                     failures[f"{type(error).__name__}:{session.last_error_stage}"] += 1
             await asyncio.sleep(min(2, max(0, end - time.monotonic())))
         report["hold_end_unix_ns"] = time.time_ns()
+        report["hold_end_monotonic_ns"] = time.monotonic_ns()
         survived = 0
         async def verify(session):
             nonlocal survived
@@ -193,7 +195,8 @@ async def soak(args):
               ("overload", "/api/compute?iterations=20000000", args.overload_connections, False),
               ("recovery", "/hello", args.connections, False)]
     report = {"environment": environment(), "arguments": vars(args), "bucket_upper_bounds_ms": BUCKETS,
-              "start_unix_ns": time.time_ns(), "phase_totals": {}, "unexpected_errors": 0}
+              "start_unix_ns": time.time_ns(), "start_monotonic_ns": int(start * 1e9),
+              "phase_totals": {}, "unexpected_errors": 0}
     index = 0
     with (output / "client-windows.jsonl").open("w", buffering=1) as sink:
         while time.monotonic() < end:
@@ -219,21 +222,26 @@ async def soak(args):
                     await session.close()
             work = asyncio.gather(*(worker() for _ in range(connections)))
             window_start = time.time_ns()
+            window_start_mono = time.monotonic_ns()
             while not work.done():
                 await asyncio.sleep(min(args.window_seconds, max(.01, phase_end - time.monotonic())))
                 window_end = time.time_ns()
+                window_end_mono = time.monotonic_ns()
                 sink.write(json.dumps({"phase": name, "cycle": index // 4,
                                        "start_unix_ns": window_start, "end_unix_ns": window_end,
+                                       "start_monotonic_ns": window_start_mono, "end_monotonic_ns": window_end_mono,
                                        "network": network_snapshot(),
                                        **window.result()}) + "\n")
                 window = Window()
                 window_start = window_end
+                window_start_mono = window_end_mono
                 # Once admission stops, wait for the last in-flight responses instead of spinning.
                 if time.monotonic() >= phase_end:
                     await work
                     if window.success.count or window.failure.count:
                         sink.write(json.dumps({"phase": name, "cycle": index // 4,
                                                "start_unix_ns": window_start, "end_unix_ns": time.time_ns(),
+                                               "start_monotonic_ns": window_start_mono, "end_monotonic_ns": time.monotonic_ns(),
                                                "network": network_snapshot(),
                                                **window.result()}) + "\n")
                     break
@@ -245,6 +253,7 @@ async def soak(args):
             print(json.dumps({"phase_finished": name, "elapsed_seconds": report["elapsed_seconds"],
                               "unexpected_errors": report["unexpected_errors"]}), flush=True)
     report["end_unix_ns"] = time.time_ns()
+    report["end_monotonic_ns"] = time.monotonic_ns()
     report["completed"] = True
     write_json(output / "client.json", report)
     if report["unexpected_errors"]:

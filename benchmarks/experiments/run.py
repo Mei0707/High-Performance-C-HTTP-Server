@@ -3,9 +3,11 @@
 import argparse
 import gzip
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import time
 import uuid
 from common import profile_valid
@@ -80,6 +82,7 @@ def run_case(args, architecture):
                    "--connections", str(args.connections), "--duration", str(args.duration),
                    "--phase-seconds", str(args.phase_seconds), "--overload-connections", str(args.overload_connections)]
     plan = {"mode": args.mode, "architecture": architecture, "topology": "Separate containers and disjoint CPU sets on ONE Linux VM; shared kernel, memory, and network",
+            "host_idle_sleep_assertion": args.host_idle_sleep_assertion,
             "server_cpus": sorted(cpu_set(args.server_cpus)), "client_cpus": sorted(cpu_set(args.client_cpus)),
             "image": args.image, "server_command": ["docker", *start], "client_command": ["docker", *client]}
     (output / "plan.json").write_text(json.dumps(plan, indent=2) + "\n")
@@ -173,8 +176,17 @@ def main():
     args.output = args.output.resolve()
     cases = args.cases or (["reactor"] if args.mode == "soak" else ["reactor", "baseline"])
     failed = False
-    for architecture in cases:
-        failed |= not run_case(args, architecture)
+    awake = None
+    if sys.platform == "darwin" and shutil.which("caffeinate"):
+        awake = subprocess.Popen(["caffeinate","-i","-w",str(os.getpid())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    args.host_idle_sleep_assertion = awake is not None
+    try:
+        for architecture in cases:
+            failed |= not run_case(args, architecture)
+    finally:
+        if awake:
+            awake.terminate()
+            awake.wait()
     if failed:
         raise SystemExit(1)
 

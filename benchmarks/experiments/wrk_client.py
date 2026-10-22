@@ -23,9 +23,11 @@ def main(args):
     for repetition in range(args.repetitions):
         usage_before = resource.getrusage(resource.RUSAGE_CHILDREN)
         start = time.time_ns()
+        start_mono = time.monotonic_ns()
         cmd = [*command, f"-d{args.duration}s", url, "--", validation]
         completed = subprocess.run(cmd, capture_output=True, text=True, check=True)
         end = time.time_ns()
+        end_mono = time.monotonic_ns()
         usage_after = resource.getrusage(resource.RUSAGE_CHILDREN)
         (output / f"wrk-{repetition+1}.txt").write_text(completed.stdout + completed.stderr)
         lines = [line.removeprefix("PULSE_RESULT ") for line in completed.stdout.splitlines() if line.startswith("PULSE_RESULT ")]
@@ -33,9 +35,11 @@ def main(args):
             raise RuntimeError("missing wrk validation output")
         result = json.loads(lines[0])
         result.update({"command": cmd, "start_unix_ns": start, "end_unix_ns": end,
+                       "start_monotonic_ns": start_mono, "end_monotonic_ns": end_mono,
                        "client_cpu_seconds": usage_after.ru_utime + usage_after.ru_stime - usage_before.ru_utime - usage_before.ru_stime})
-        result["client_cpu_percent"] = result["client_cpu_seconds"] / ((end-start)/1e9) * 100
-        result["valid"] = result["http_200"] > 0 and all(result[key] == 0 for key in ("http_other", "invalid_bodies", "connect_errors", "read_errors", "write_errors", "timeouts"))
+        result["client_cpu_percent"] = result["client_cpu_seconds"] / ((end_mono-start_mono)/1e9) * 100
+        result["clock_discontinuity_seconds"] = ((end-start) - (end_mono-start_mono)) / 1e9
+        result["valid"] = abs(result["clock_discontinuity_seconds"]) < .1 and result["http_200"] > 0 and all(result[key] == 0 for key in ("http_other", "invalid_bodies", "connect_errors", "read_errors", "write_errors", "timeouts"))
         failed |= not result["valid"]
         report["runs"].append(result)
         write_json(output / "client.json", report)

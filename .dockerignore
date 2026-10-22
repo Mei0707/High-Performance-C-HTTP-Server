@@ -2,3 +2,5 @@ build*
 .git
 High.pdf
 benchmarks/reports/raw
+benchmarks/reports/follow-up
+benchmarks/reports/hosted

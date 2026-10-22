@@ -1,31 +1,71 @@
 name: Linux build and validation
-on: [push, pull_request]
+"on":
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   test:
+    name: ${{ matrix.name }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
-        sanitizer: ["", "address,undefined", "thread"]
+        include:
+          - name: Release
+            sanitizer: ""
+            build_type: Release
+          - name: ASan-UBSan
+            sanitizer: address,undefined
+            build_type: RelWithDebInfo
+          - name: TSan
+            sanitizer: thread
+            build_type: RelWithDebInfo
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update && sudo apt-get install -y ninja-build libgtest-dev
-      - run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPULSE_SANITIZER='${{ matrix.sanitizer }}'
+      - run: sudo apt-get update && sudo apt-get install -y g++ cmake ninja-build python3 libgtest-dev
+      - run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DPULSE_SANITIZER='${{ matrix.sanitizer }}'
       - run: cmake --build build -j2
-      - run: ctest --test-dir build --output-on-failure
+      - run: ctest --test-dir build --output-on-failure --output-junit test-results.xml
         env:
           ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
           UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
           TSAN_OPTIONS: halt_on_error=1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tests-${{ matrix.name }}
+          path: |
+            build/test-results.xml
+            build/Testing/Temporary/*.log
+            build/CMakeCache.txt
   fuzz:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - run: cmake -S . -B build-fuzz -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DPULSE_BUILD_TESTS=OFF -DPULSE_FUZZ=ON -DPULSE_SANITIZER=address,undefined
+      - run: sudo apt-get update && sudo apt-get install -y clang libclang-rt-18-dev ninja-build
+      - run: cmake -S . -B build-fuzz -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPULSE_BUILD_TESTS=OFF -DPULSE_FUZZ=ON -DPULSE_SANITIZER=address,undefined
       - run: cmake --build build-fuzz --target http_parser_fuzz -j2
-      - run: mkdir -p /tmp/pulse-corpus && cp fuzz/corpus/* /tmp/pulse-corpus/ && build-fuzz/http_parser_fuzz /tmp/pulse-corpus -max_total_time=30 -max_len=131072
+      - run: |
+          mkdir -p /tmp/pulse-corpus build-fuzz/artifacts
+          cp fuzz/corpus/* /tmp/pulse-corpus/
+          build-fuzz/http_parser_fuzz /tmp/pulse-corpus -max_total_time=60 -max_len=131072 -print_final_stats=1 -artifact_prefix=build-fuzz/artifacts/ 2>&1 | tee build-fuzz/fuzz.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: parser-fuzz
+          path: |
+            build-fuzz/fuzz.log
+            build-fuzz/artifacts/
   docker:
     runs-on: ubuntu-24.04
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - run: docker build -t pulsehttp .

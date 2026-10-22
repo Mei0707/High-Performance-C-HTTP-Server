@@ -37,8 +37,7 @@ python3 tests/stress.py --connections 1000 --rounds 3 --requests 10 --output /tm
 
 Load comparisons and resource samples are recorded separately in the
 [benchmark report](../benchmarks/reports/summary.md). Their source and binary hashes identify
-the measured build. Native hardware capacity tests, a long-duration soak and privileged
-perf profiling were not performed in this validation.
+the measured build. This original validation predates the controlled experiments below.
 
 The final multi-stage Docker image built successfully, including its clean CTest stage.
 Its runtime user was verified as UID 10001. A client on its private container network
@@ -52,3 +51,20 @@ its [raw output](validation/parser-microbenchmark.json) is retained as target va
 The distribution's Google Benchmark library reported a DEBUG build, so its timings
 are not used for a performance claim. The full fuzz configuration also built all of its
 normal executable targets successfully.
+
+## Hosted CI and experiment follow-up
+
+The [hosted CI run](https://github.com/Mei0707/High-Performance-C-HTTP-Server/actions/runs/39843244988)
+for commit `62c7fc62e7ca8736622c33aca1b14ebbf2c5efdb` passed all five jobs:
+Release, ASan/UBSan, TSan, parser fuzzing and a clean Docker build. Each CTest
+configuration now also includes 11 experiment-integrity checks covering CPU separation,
+body corruption, DNS reuse, failure stages, histograms, profiling completion and clock
+discontinuities. The [API snapshot](validation/hosted-ci.json) includes job steps and
+artifact digests. The hosted [Release](validation/hosted-release.log),
+[ASan/UBSan](validation/hosted-asan.log) and [TSan](validation/hosted-tsan.log) test logs
+are retained; each downloaded ZIP matched its recorded artifact digest.
+
+The [follow-up report](../benchmarks/reports/follow-up/README.md) retains separate-CPU
+benchmarks, 2,000 mostly idle connections, Linux perf traces and soak outcomes, including
+failed criteria and clock qualifications. These experiments use CPU-separated containers;
+independent physical client/server hosts remain unmeasured.

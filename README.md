@@ -120,3 +120,6 @@ Additional [controlled experiments](docs/experiments.md) use separate client/ser
 containers pinned to disjoint CPUs, compare thousands of mostly idle connections,
 stream bounded soak-test histograms, and collect Linux perf profiles. The manual GitHub
 Actions experiment workflow preserves artifacts for optional longer hosted runs.
+See the [follow-up measurements](benchmarks/reports/follow-up/README.md) for the 2,000
+mostly idle connection comparison, separate client CPU measurements, profiles, and
+the retained soak outcomes and qualifications.

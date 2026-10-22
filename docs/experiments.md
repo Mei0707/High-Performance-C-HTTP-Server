@@ -99,6 +99,13 @@ python3 benchmarks/experiments/report.py --output /tmp/comparison.json \
   benchmarks/reports/follow-up/idle-2000/baseline
 ```
 
+Resource plots use matplotlib and a monotonic elapsed-time axis. For an isolated
+plotting environment, build `benchmarks/experiments/Dockerfile.reporting` as
+`pulsehttp-reporting`, then run `benchmarks/scripts/plot_soak.py CASE --output PREFIX`
+with the source mounted at /src and a writable output directory. Legacy records derive
+their monotonic origin from paired server samples; new records contain explicit client
+monotonic timestamps. The figure annotates detected wall-clock discontinuities.
+
 Telemetry includes RSS, reserved virtual memory, threads, FDs, process CPU and cgroup
 memory. RSS excludes kernel stacks; cgroup memory also includes the Python monitor,
 kernel allocations and charged file cache. CPU percentages use actual monotonic sample

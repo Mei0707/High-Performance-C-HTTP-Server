@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 from statistics import median
+from common import profile_valid
 
 
 def resources(samples, start, end, time_key="unix_ns"):
@@ -22,6 +23,8 @@ def summarize(case):
     plan = json.loads((case / "plan.json").read_text())
     client = json.loads((case / "client/client.json").read_text())
     server = json.loads((case / "server/server-metadata.json").read_text())
+    controller_path = case / "result.json"
+    controller = json.loads(controller_path.read_text()) if controller_path.exists() else None
     samples = [json.loads(line) for line in (case / "server/server-samples.jsonl").read_text().splitlines()]
     result = {"case": str(case), "mode": plan["mode"], "architecture": plan["architecture"],
               "initial_fds": server["initial_sample"]["fds"], "final_fds": samples[-1]["fds"] if samples else None,
@@ -34,6 +37,9 @@ def summarize(case):
     if set(result["server_affinity"]) & set(result["client_affinity"]):
         raise ValueError(f"CPU overlap in measured data: {case}")
     result["descriptor_recovery"] = result["final_fds"] is not None and result["final_fds"] <= result["initial_fds"] + 2
+    result["uninterrupted_clock"] = not result["clock_discontinuities"]
+    passed = bool(controller and controller.get("client_exit_code") == 0 and
+                  controller.get("monitor_state",{}).get("ExitCode") == 0 and result["descriptor_recovery"])
     if plan["mode"] in ("benchmark", "perf"):
         runs = client["runs"]
         result["runs"] = [{**r, "server_resources": resources(samples,
@@ -47,13 +53,19 @@ def summarize(case):
         measured = [r["server_resources"] for r in result["runs"] if r["server_resources"]]
         result["median_server_cpu_percent"] = median(r["cpu_percent"] for r in measured) if measured else None
         result["all_runs_valid"] = all(r["valid"] for r in runs)
+        passed = passed and result["all_runs_valid"] and result["uninterrupted_clock"]
+        if plan["mode"] == "perf":
+            profile = json.loads((case / "server/server-result.json").read_text())
+            passed = passed and profile_valid(profile,(case / "server/perf-stat.csv").read_text())
     elif plan["mode"] == "idle":
         result.update({k:client[k] for k in ("requested", "established", "survived", "failures", "target_reached")})
         result["hold_resources"] = resources(samples, client.get("hold_start_monotonic_ns",client["hold_start_unix_ns"]),
                                                client.get("hold_end_monotonic_ns",client["hold_end_unix_ns"]),
                                                "monotonic_ns" if "hold_start_monotonic_ns" in client else "unix_ns")
+        passed = passed and result["target_reached"]
     else:
         result.update({k:client.get(k) for k in ("elapsed_seconds", "completed", "phase_totals", "unexpected_errors", "client_peak_rss_kib")})
+        passed = passed and bool(client.get("completed")) and client.get("unexpected_errors") == 0 and result["uninterrupted_clock"]
         windows = [json.loads(line) for line in (case / "client/client-windows.jsonl").read_text().splitlines()]
         recovery = []
         for w in windows:
@@ -73,6 +85,7 @@ def summarize(case):
             mean_x, mean_y = sum(x)/len(x), sum(y)/len(y)
             denominator = sum((n-mean_x)**2 for n in x)
             result["recovery_rss_slope_kib_per_minute"] = sum((a-mean_x)*(b-mean_y) for a,b in zip(x,y)) / denominator if denominator else None
+    result["assertions_passed"] = passed if controller else None
     return result
 
 

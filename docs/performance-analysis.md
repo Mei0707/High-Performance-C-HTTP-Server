@@ -78,7 +78,8 @@ counter. A longer open-loop load experiment is needed to characterize recovery c
 queue residence times and memory over extended overload. Metrics requests use the same
 worker pool and can themselves receive 503 during saturation.
 
-The next evidence to collect is a dedicated-client experiment with native Linux storage,
-longer randomized repetitions, an idle-connection resource comparison, a sustained overload
-soak, and perf profiles of the small-handler handoff path. No profiler-derived optimization
-claim is made here.
+The [follow-up report](../benchmarks/reports/follow-up/README.md) adds wrk in a separate
+container on disjoint CPUs, a 2,000-connection mostly idle comparison, and Linux perf
+profiles. It also preserves both soak results and their timing/error qualifications.
+Native Linux storage, independent physical client/server hosts and longer randomized
+repetitions remain further work. No profiler-derived optimization claim is made here.

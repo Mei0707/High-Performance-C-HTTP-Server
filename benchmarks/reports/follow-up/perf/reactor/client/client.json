@@ -1,0 +1,60 @@
+{
+  "environment": {
+    "unix_ns": 1792694784516524842,
+    "platform": "Linux-6.10.14-linuxkit-aarch64-with-glibc2.39",
+    "python": "3.12.3",
+    "affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "logical_cpus": 10,
+    "cpuinfo": "processor\t: 0\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 1\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 2\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 3\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 4\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 5\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 6\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 7\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 8\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0\n\nprocessor\t: 9\nBogoMIPS\t: 48.00\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti\nCPU implementer\t: 0x61\nCPU architecture: 8\nCPU variant\t: 0x0\nCPU part\t: 0x000\nCPU revision\t: 0",
+    "meminfo": "MemTotal:        8025424 kB\nMemFree:          883040 kB\nMemAvailable:    4271968 kB\nBuffers:          265152 kB\nCached:          2952356 kB\nSwapCached:          484 kB\nActive:          3044664 kB\nInactive:        3129680 kB\nActive(anon):    1966032 kB\nInactive(anon):  1266528 kB\nActive(file):    1078632 kB\nInactive(file):  1863152 kB\nUnevictable:         168 kB\nMlocked:               0 kB\nSwapTotal:       1048572 kB\nSwapFree:         966684 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:               132 kB\nWriteback:             0 kB\nAnonPages:       2746096 kB\nMapped:          1348400 kB\nShmem:            275724 kB\nKReclaimable:     650116 kB\nSlab:             792008 kB\nSReclaimable:     650116 kB\nSUnreclaim:       141892 kB\nKernelStack:       21584 kB\nPageTables:        25384 kB\nSecPageTables:         0 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     5061284 kB\nCommitted_AS:    8459300 kB\nVmallocTotal:   135288315904 kB\nVmallocUsed:        7556 kB\nVmallocChunk:          0 kB\nPercpu:             9280 kB\nAnonHugePages:   1882112 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB",
+    "fd_limit": [
+      65536,
+      65536
+    ],
+    "pids_max": "256",
+    "memory_max": "536870912",
+    "cpu_max": "max 100000",
+    "commit": "06b8abf94b36d3380eb1c116422f3b38c9965d64",
+    "experiment_source_sha256": "1095e0fbfde2350ac186ebdce2f9d3af4c687ff60a8c91816690beaf3653e331"
+  },
+  "tool_version": "wrk debian/4.1.0-4build2 [epoll] Copyright (C) 2012 Will Glozer\nUsage: wrk <options> <url>                            \n  Options:                                            \n    -c, --connections <N>  Connections to keep open   \n    -d, --duration    <T>  Duration of test           \n    -t, --threads     <N>  Number of threads to use   \n                                                      \n    -s, --script      <S>  Load Lua script file       \n    -H, --header      <H>  Add header to request      \n        --latency          Print latency statistics   \n        --timeout     <T>  Socket/request timeout     \n    -v, --version          Print version details      \n                                                      \n  Numeric arguments may include a SI unit (1k, 1M, 1G)\n  Time arguments may include a time unit (2s, 2m, 2h)\n",
+  "target": "http://server:8080/hello",
+  "runs": [
+    {
+      "http_200": 648520,
+      "http_other": 0,
+      "invalid_bodies": 0,
+      "duration_us": 15035895,
+      "successful_rps": 43131.453099,
+      "p50_ms": 2.79,
+      "p95_ms": 4.259,
+      "p99_ms": 6.173,
+      "connect_errors": 0,
+      "read_errors": 0,
+      "write_errors": 0,
+      "timeouts": 0,
+      "command": [
+        "wrk",
+        "-t4",
+        "-c128",
+        "--latency",
+        "-s",
+        "benchmarks/wrk/validated.lua",
+        "-d15s",
+        "http://server:8080/hello",
+        "--",
+        "hello"
+      ],
+      "start_unix_ns": 1792694786669328009,
+      "end_unix_ns": 1792694801716499961,
+      "client_cpu_seconds": 8.662668,
+      "client_cpu_percent": 57.57007381608741,
+      "valid": true
+    }
+  ]
+}

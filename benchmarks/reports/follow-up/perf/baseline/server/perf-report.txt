@@ -1,0 +1,52 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 2K of event 'cpu-clock'
+# Event count (approx.): 21555555340
+#
+# Overhead  Command          Shared Object          Symbol                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+# ........  ...............  .....................  .......................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+#
+    25.07%  thread_per_conn  [kernel.kallsyms]      [k] __schedule
+     4.36%  thread_per_conn  [kernel.kallsyms]      [k] arch_counter_get_cntvct
+     3.09%  thread_per_conn  [kernel.kallsyms]      [k] el0_svc
+     3.00%  thread_per_conn  [kernel.kallsyms]      [k] finish_task_switch.isra.0
+     2.81%  thread_per_conn  [kernel.kallsyms]      [k] sock_def_readable
+     2.39%  thread_per_conn  [vdso]                 [.] __kernel_clock_gettime
+     2.25%  thread_per_conn  [kernel.kallsyms]      [k] handle_softirqs
+     1.92%  thread_per_conn  [kernel.kallsyms]      [k] nf_conntrack_tcp_packet
+     1.73%  thread_per_conn  [kernel.kallsyms]      [k] tcp_ack
+     1.50%  thread_per_conn  [kernel.kallsyms]      [k] hrtimer_start_range_ns
+     1.50%  thread_per_conn  [kernel.kallsyms]      [k] nft_do_chain
+     1.08%  thread_per_conn  [kernel.kallsyms]      [k] __siphash_unaligned
+     1.03%  thread_per_conn  [kernel.kallsyms]      [k] br_nf_pre_routing
+     1.03%  thread_per_conn  libc.so.6              [.] __send
+     1.03%  thread_per_conn  libc.so.6              [.] recv
+     0.98%  thread_per_conn  [kernel.kallsyms]      [k] __nf_conntrack_find_get
+     0.98%  thread_per_conn  [kernel.kallsyms]      [k] nf_nat_inet_fn
+     0.94%  thread_per_conn  [kernel.kallsyms]      [k] __netif_receive_skb_core.constprop.0
+     0.94%  thread_per_conn  [kernel.kallsyms]      [k] tcp_v4_rcv
+     0.94%  thread_per_conn  thread_per_connection  [.] pulsehttp::HttpParser::parse_headers(std::basic_string_view<char, std::char_traits<char> >)
+     0.89%  thread_per_conn  [kernel.kallsyms]      [k] memset
+     0.84%  thread_per_conn  [kernel.kallsyms]      [k] process_backlog
+     0.80%  thread_per_conn  [kernel.kallsyms]      [k] __wake_up_common_lock
+     0.75%  thread_per_conn  [kernel.kallsyms]      [k] do_sys_poll
+     0.70%  thread_per_conn  [kernel.kallsyms]      [k] __fget_light
+     0.70%  thread_per_conn  [kernel.kallsyms]      [k] net_rx_action
+     0.70%  thread_per_conn  [kernel.kallsyms]      [k] skb_release_data
+     0.70%  thread_per_conn  libc.so.6              [.] __poll
+     0.70%  thread_per_conn  thread_per_connection  [.] pulsehttp::HttpResponse::serialize[abi:cxx11](bool, bool) const
+     0.66%  thread_per_conn  [kernel.kallsyms]      [k] __arch_copy_to_user
+     0.66%  thread_per_conn  [kernel.kallsyms]      [k] __local_bh_enable_ip
+     0.66%  thread_per_conn  [kernel.kallsyms]      [k] mem_cgroup_charge_skmem
+     0.66%  thread_per_conn  [kernel.kallsyms]      [k] nf_conntrack_in
+     0.56%  thread_per_conn  [kernel.kallsyms]      [k] invoke_syscall.constprop.0
+     0.56%  thread_per_conn  [kernel.kallsyms]      [k] tcp_write_xmit
+     0.52%  thread_per_conn  [kernel.kallsyms]      [k] br_handle_frame
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

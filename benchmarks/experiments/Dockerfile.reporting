@@ -1,0 +1,3 @@
+FROM pulsehttp-experiments
+RUN apt-get update && apt-get install -y --no-install-recommends python3-matplotlib \
+    && rm -rf /var/lib/apt/lists/*

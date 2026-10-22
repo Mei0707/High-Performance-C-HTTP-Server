@@ -1,0 +1,1465 @@
+[
+  {
+    "case": "benchmarks/reports/follow-up/dedicated/reactor",
+    "mode": "benchmark",
+    "architecture": "reactor",
+    "initial_fds": 8,
+    "final_fds": 8,
+    "server_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "client_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "clock_discontinuities": [],
+    "descriptor_recovery": true,
+    "uninterrupted_clock": true,
+    "runs": [
+      {
+        "http_200": 430500,
+        "http_other": 0,
+        "invalid_bodies": 0,
+        "duration_us": 10035570,
+        "successful_rps": 42897.413899,
+        "p50_ms": 2.775,
+        "p95_ms": 4.355,
+        "p99_ms": 7.063,
+        "connect_errors": 0,
+        "read_errors": 0,
+        "write_errors": 0,
+        "timeouts": 0,
+        "command": [
+          "wrk",
+          "-t4",
+          "-c128",
+          "--latency",
+          "-s",
+          "benchmarks/wrk/validated.lua",
+          "-d10s",
+          "http://server:8080/hello",
+          "--",
+          "hello"
+        ],
+        "start_unix_ns": 1792694570311483548,
+        "end_unix_ns": 1792694580358741970,
+        "client_cpu_seconds": 5.7491140000000005,
+        "client_cpu_percent": 57.22072388833397,
+        "valid": true,
+        "server_resources": {
+          "sampled_seconds": 9.017370213,
+          "cpu_percent": 120.21243160641653,
+          "peak_rss_kib": 3512,
+          "peak_vms_kib": 301260,
+          "peak_threads": 5,
+          "peak_fds": 136,
+          "peak_cgroup_mib": 11.96484375
+        }
+      },
+      {
+        "http_200": 432168,
+        "http_other": 0,
+        "invalid_bodies": 0,
+        "duration_us": 10052090,
+        "successful_rps": 42992.850243,
+        "p50_ms": 2.779,
+        "p95_ms": 4.189,
+        "p99_ms": 6.661,
+        "connect_errors": 0,
+        "read_errors": 0,
+        "write_errors": 0,
+        "timeouts": 0,
+        "command": [
+          "wrk",
+          "-t4",
+          "-c128",
+          "--latency",
+          "-s",
+          "benchmarks/wrk/validated.lua",
+          "-d10s",
+          "http://server:8080/hello",
+          "--",
+          "hello"
+        ],
+        "start_unix_ns": 1792694580362968428,
+        "end_unix_ns": 1792694590432092835,
+        "client_cpu_seconds": 5.778215,
+        "client_cpu_percent": 57.38547629804849,
+        "valid": true,
+        "server_resources": {
+          "sampled_seconds": 9.02136617,
+          "cpu_percent": 120.7134240511601,
+          "peak_rss_kib": 3512,
+          "peak_vms_kib": 301260,
+          "peak_threads": 5,
+          "peak_fds": 136,
+          "peak_cgroup_mib": 11.9296875
+        }
+      },
+      {
+        "http_200": 434913,
+        "http_other": 0,
+        "invalid_bodies": 0,
+        "duration_us": 10024032,
+        "successful_rps": 43387.032284,
+        "p50_ms": 2.801,
+        "p95_ms": 4.07,
+        "p99_ms": 5.456,
+        "connect_errors": 0,
+        "read_errors": 0,
+        "write_errors": 0,
+        "timeouts": 0,
+        "command": [
+          "wrk",
+          "-t4",
+          "-c128",
+          "--latency",
+          "-s",
+          "benchmarks/wrk/validated.lua",
+          "-d10s",
+          "http://server:8080/hello",
+          "--",
+          "hello"
+        ],
+        "start_unix_ns": 1792694590436078168,
+        "end_unix_ns": 1792694600471064965,
+        "client_cpu_seconds": 5.771377000000001,
+        "client_cpu_percent": 57.51255200181606,
+        "valid": true,
+        "server_resources": {
+          "sampled_seconds": 9.01807092,
+          "cpu_percent": 120.86842182429854,
+          "peak_rss_kib": 3512,
+          "peak_vms_kib": 301260,
+          "peak_threads": 5,
+          "peak_fds": 136,
+          "peak_cgroup_mib": 11.97265625
+        }
+      }
+    ],
+    "median_rps": 42992.850243,
+    "min_rps": 42897.413899,
+    "max_rps": 43387.032284,
+    "median_p99_ms": 6.661,
+    "median_client_cpu_percent": 57.38547629804849,
+    "median_server_cpu_percent": 120.7134240511601,
+    "all_runs_valid": true,
+    "assertions_passed": true
+  },
+  {
+    "case": "benchmarks/reports/follow-up/dedicated/baseline",
+    "mode": "benchmark",
+    "architecture": "baseline",
+    "initial_fds": 6,
+    "final_fds": 6,
+    "server_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "client_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "clock_discontinuities": [],
+    "descriptor_recovery": true,
+    "uninterrupted_clock": true,
+    "runs": [
+      {
+        "http_200": 2223340,
+        "http_other": 0,
+        "invalid_bodies": 0,
+        "duration_us": 10033686,
+        "successful_rps": 221587.560145,
+        "p50_ms": 0.472,
+        "p95_ms": 1.169,
+        "p99_ms": 4.044,
+        "connect_errors": 0,
+        "read_errors": 0,
+        "write_errors": 0,
+        "timeouts": 109,
+        "command": [
+          "wrk",
+          "-t4",
+          "-c128",
+          "--latency",
+          "-s",
+          "benchmarks/wrk/validated.lua",
+          "-d10s",
+          "http://server:8080/hello",
+          "--",
+          "hello"
+        ],
+        "start_unix_ns": 1792694608164879302,
+        "end_unix_ns": 1792694618211530376,
+        "client_cpu_seconds": 36.999896,
+        "client_cpu_percent": 368.2808900943423,
+        "valid": false,
+        "server_resources": {
+          "sampled_seconds": 8.474320378,
+          "cpu_percent": 392.5978546476899,
+          "peak_rss_kib": 5408,
+          "peak_vms_kib": 6240036,
+          "peak_threads": 129,
+          "peak_fds": 134,
+          "peak_cgroup_mib": 17.98828125
+        }
+      },
+      {
+        "http_200": 2266382,
+        "http_other": 0,
+        "invalid_bodies": 0,
+        "duration_us": 10026928,
+        "successful_rps": 226029.547634,
+        "p50_ms": 0.467,
+        "p95_ms": 1.077,
+        "p99_ms": 3.36,
+        "connect_errors": 0,
+        "read_errors": 0,
+        "write_errors": 0,
+        "timeouts": 0,
+        "command": [
+          "wrk",
+          "-t4",
+          "-c128",
+          "--latency",
+          "-s",
+          "benchmarks/wrk/validated.lua",
+          "-d10s",
+          "http://server:8080/hello",
+          "--",
+          "hello"
+        ],
+        "start_unix_ns": 1792694618217891959,
+        "end_unix_ns": 1792694628263459964,
+        "client_cpu_seconds": 37.20305999999999,
+        "client_cpu_percent": 370.34302073792975,
+        "valid": true,
+        "server_resources": {
+          "sampled_seconds": 9.54830763,
+          "cpu_percent": 392.8444856777201,
+          "peak_rss_kib": 5244,
+          "peak_vms_kib": 6240036,
+          "peak_threads": 129,
+          "peak_fds": 134,
+          "peak_cgroup_mib": 18.015625
+        }
+      },
+      {
+        "http_200": 2285972,
+        "http_other": 0,
+        "invalid_bodies": 0,
+        "duration_us": 10085262,
+        "successful_rps": 226664.612184,
+        "p50_ms": 0.476,
+        "p95_ms": 1.04,
+        "p99_ms": 3.86,
+        "connect_errors": 0,
+        "read_errors": 0,
+        "write_errors": 0,
+        "timeouts": 0,
+        "command": [
+          "wrk",
+          "-t4",
+          "-c128",
+          "--latency",
+          "-s",
+          "benchmarks/wrk/validated.lua",
+          "-d10s",
+          "http://server:8080/hello",
+          "--",
+          "hello"
+        ],
+        "start_unix_ns": 1792694628266507755,
+        "end_unix_ns": 1792694638378869135,
+        "client_cpu_seconds": 36.44441600000002,
+        "client_cpu_percent": 360.39471524503625,
+        "valid": true,
+        "server_resources": {
+          "sampled_seconds": 8.573199505,
+          "cpu_percent": 386.08689767099975,
+          "peak_rss_kib": 5328,
+          "peak_vms_kib": 6240036,
+          "peak_threads": 129,
+          "peak_fds": 134,
+          "peak_cgroup_mib": 17.77734375
+        }
+      }
+    ],
+    "median_rps": 226029.547634,
+    "min_rps": 221587.560145,
+    "max_rps": 226664.612184,
+    "median_p99_ms": 3.86,
+    "median_client_cpu_percent": 368.2808900943423,
+    "median_server_cpu_percent": 392.5978546476899,
+    "all_runs_valid": false,
+    "assertions_passed": false
+  },
+  {
+    "case": "benchmarks/reports/follow-up/idle-2000/reactor",
+    "mode": "idle",
+    "architecture": "reactor",
+    "initial_fds": 8,
+    "final_fds": 8,
+    "server_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "client_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "clock_discontinuities": [],
+    "descriptor_recovery": true,
+    "uninterrupted_clock": true,
+    "requested": 2000,
+    "established": 2000,
+    "survived": 2000,
+    "failures": {},
+    "target_reached": true,
+    "hold_resources": {
+      "sampled_seconds": 29.296025305,
+      "cpu_percent": 0.8533580832118276,
+      "peak_rss_kib": 4792,
+      "peak_vms_kib": 302592,
+      "peak_threads": 5,
+      "peak_fds": 2008,
+      "peak_cgroup_mib": 18.0546875
+    },
+    "assertions_passed": true
+  },
+  {
+    "case": "benchmarks/reports/follow-up/idle-2000/baseline",
+    "mode": "idle",
+    "architecture": "baseline",
+    "initial_fds": 6,
+    "final_fds": 6,
+    "server_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "client_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "clock_discontinuities": [],
+    "descriptor_recovery": true,
+    "uninterrupted_clock": true,
+    "requested": 2000,
+    "established": 2000,
+    "survived": 2000,
+    "failures": {},
+    "target_reached": true,
+    "hold_resources": {
+      "sampled_seconds": 29.078033388,
+      "cpu_percent": 54.43972014466688,
+      "peak_rss_kib": 31044,
+      "peak_vms_kib": 21696060,
+      "peak_threads": 2001,
+      "peak_fds": 2006,
+      "peak_cgroup_mib": 95.85546875
+    },
+    "assertions_passed": true
+  },
+  {
+    "case": "benchmarks/reports/follow-up/perf/reactor",
+    "mode": "perf",
+    "architecture": "reactor",
+    "initial_fds": 8,
+    "final_fds": 8,
+    "server_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "client_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "clock_discontinuities": [],
+    "descriptor_recovery": true,
+    "uninterrupted_clock": true,
+    "runs": [
+      {
+        "http_200": 648520,
+        "http_other": 0,
+        "invalid_bodies": 0,
+        "duration_us": 15035895,
+        "successful_rps": 43131.453099,
+        "p50_ms": 2.79,
+        "p95_ms": 4.259,
+        "p99_ms": 6.173,
+        "connect_errors": 0,
+        "read_errors": 0,
+        "write_errors": 0,
+        "timeouts": 0,
+        "command": [
+          "wrk",
+          "-t4",
+          "-c128",
+          "--latency",
+          "-s",
+          "benchmarks/wrk/validated.lua",
+          "-d15s",
+          "http://server:8080/hello",
+          "--",
+          "hello"
+        ],
+        "start_unix_ns": 1792694786669328009,
+        "end_unix_ns": 1792694801716499961,
+        "client_cpu_seconds": 8.662668,
+        "client_cpu_percent": 57.57007381608741,
+        "valid": true,
+        "server_resources": {
+          "sampled_seconds": 14.02794209,
+          "cpu_percent": 126.53317133846251,
+          "peak_rss_kib": 3416,
+          "peak_vms_kib": 301112,
+          "peak_threads": 5,
+          "peak_fds": 136,
+          "peak_cgroup_mib": 30.40625
+        }
+      }
+    ],
+    "median_rps": 43131.453099,
+    "min_rps": 43131.453099,
+    "max_rps": 43131.453099,
+    "median_p99_ms": 6.173,
+    "median_client_cpu_percent": 57.57007381608741,
+    "median_server_cpu_percent": 126.53317133846251,
+    "all_runs_valid": true,
+    "assertions_passed": true
+  },
+  {
+    "case": "benchmarks/reports/follow-up/perf/baseline",
+    "mode": "perf",
+    "architecture": "baseline",
+    "initial_fds": 6,
+    "final_fds": 6,
+    "server_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "client_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "clock_discontinuities": [],
+    "descriptor_recovery": true,
+    "uninterrupted_clock": true,
+    "runs": [
+      {
+        "http_200": 3018602,
+        "http_other": 0,
+        "invalid_bodies": 0,
+        "duration_us": 15053897,
+        "successful_rps": 200519.639533,
+        "p50_ms": 0.512,
+        "p95_ms": 1.815,
+        "p99_ms": 10.119,
+        "connect_errors": 0,
+        "read_errors": 0,
+        "write_errors": 0,
+        "timeouts": 0,
+        "command": [
+          "wrk",
+          "-t4",
+          "-c128",
+          "--latency",
+          "-s",
+          "benchmarks/wrk/validated.lua",
+          "-d15s",
+          "http://server:8080/hello",
+          "--",
+          "hello"
+        ],
+        "start_unix_ns": 1792694814512467050,
+        "end_unix_ns": 1792694829599548501,
+        "client_cpu_seconds": 53.696448000000004,
+        "client_cpu_percent": 355.9101087536112,
+        "valid": true,
+        "server_resources": {
+          "sampled_seconds": 13.929110381,
+          "cpu_percent": 384.2312863928765,
+          "peak_rss_kib": 5260,
+          "peak_vms_kib": 6240024,
+          "peak_threads": 129,
+          "peak_fds": 134,
+          "peak_cgroup_mib": 41.55078125
+        }
+      }
+    ],
+    "median_rps": 200519.639533,
+    "min_rps": 200519.639533,
+    "max_rps": 200519.639533,
+    "median_p99_ms": 10.119,
+    "median_client_cpu_percent": 355.9101087536112,
+    "median_server_cpu_percent": 384.2312863928765,
+    "all_runs_valid": true,
+    "assertions_passed": true
+  },
+  {
+    "case": "benchmarks/reports/follow-up/soak-initial-dns/reactor",
+    "mode": "soak",
+    "architecture": "reactor",
+    "initial_fds": 8,
+    "final_fds": 8,
+    "server_affinity": [
+      8
+    ],
+    "client_affinity": [
+      9
+    ],
+    "clock_discontinuities": [],
+    "descriptor_recovery": true,
+    "uninterrupted_clock": true,
+    "elapsed_seconds": 1151.4819394850056,
+    "completed": null,
+    "phase_totals": {
+      "steady": {
+        "200": 11640882
+      },
+      "churn": {
+        "200": 1158910
+      },
+      "overload": {
+        "503": 1487637,
+        "200": 4459,
+        "TimeoutError": 2
+      },
+      "recovery": {
+        "200": 10192736
+      }
+    },
+    "unexpected_errors": 2,
+    "client_peak_rss_kib": 25680,
+    "recovery_rss": [
+      {
+        "unix_ns": 1792694934654676092,
+        "monotonic_ns": 132083632593766,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792694939661151469,
+        "monotonic_ns": 132088639069185,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792694944669549805,
+        "monotonic_ns": 132093647467271,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792694949678226418,
+        "monotonic_ns": 132098656502106,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792694954686189004,
+        "monotonic_ns": 132103664464691,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792694959693612381,
+        "monotonic_ns": 132108671890777,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792695054942112967,
+        "monotonic_ns": 132203921324029,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792695059950185886,
+        "monotonic_ns": 132208929397031,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792695064957288972,
+        "monotonic_ns": 132213936500117,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792695069968385751,
+        "monotonic_ns": 132218944499661,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792695074975312837,
+        "monotonic_ns": 132223951426705,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792695079989189214,
+        "monotonic_ns": 132228965302957,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792695176162091676,
+        "monotonic_ns": 132325144887085,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792695181175458220,
+        "monotonic_ns": 132330158253754,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792695186183670166,
+        "monotonic_ns": 132335168521922,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792695191191452419,
+        "monotonic_ns": 132340176304925,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792695196199541088,
+        "monotonic_ns": 132345184392635,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792695201209525590,
+        "monotonic_ns": 132350194377138,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792695300414737428,
+        "monotonic_ns": 132449398259142,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792695305419992597,
+        "monotonic_ns": 132454403514269,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792695310423165002,
+        "monotonic_ns": 132459409296813,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792695315441205046,
+        "monotonic_ns": 132464427336857,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792695320448215881,
+        "monotonic_ns": 132469434347651,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792695325455723134,
+        "monotonic_ns": 132474441854861,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792695421690693262,
+        "monotonic_ns": 132570673292322,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792695426696379958,
+        "monotonic_ns": 132575678530907,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792695431703128669,
+        "monotonic_ns": 132580685279659,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792695436708177505,
+        "monotonic_ns": 132585690328328,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792695441714146549,
+        "monotonic_ns": 132590696297456,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792695446719220968,
+        "monotonic_ns": 132595701371791,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792695541910666262,
+        "monotonic_ns": 132690893391918,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792695546949455333,
+        "monotonic_ns": 132695930897003,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792695552029204669,
+        "monotonic_ns": 132701010646339,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792695557036593130,
+        "monotonic_ns": 132706018034133,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792695562043858132,
+        "monotonic_ns": 132711025299052,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792695567051878426,
+        "monotonic_ns": 132716033319596,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792695663249926512,
+        "monotonic_ns": 132812230326765,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792695668256342084,
+        "monotonic_ns": 132817236342934,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792695673261257545,
+        "monotonic_ns": 132822241258228,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792695678268336422,
+        "monotonic_ns": 132827248337105,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792695683273804716,
+        "monotonic_ns": 132832253805733,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792695688282283302,
+        "monotonic_ns": 132837262284318,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792695784437113013,
+        "monotonic_ns": 132933420279196,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792695789446227959,
+        "monotonic_ns": 132938425262864,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792695794452679212,
+        "monotonic_ns": 132943431717367,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792695799458411797,
+        "monotonic_ns": 132948437446911,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792695804464380550,
+        "monotonic_ns": 132953443415622,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792695809470541011,
+        "monotonic_ns": 132958449576416,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792695904628025971,
+        "monotonic_ns": 133053606341709,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792695909636205626,
+        "monotonic_ns": 133058614313044,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792695914642260504,
+        "monotonic_ns": 133063620368172,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792695919647498631,
+        "monotonic_ns": 133068625609549,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792695924653216300,
+        "monotonic_ns": 133073631324093,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792695929660253094,
+        "monotonic_ns": 133078638360762,
+        "rss_kib": 3384,
+        "cycle": 8
+      }
+    ],
+    "recovery_rss_slope_kib_per_minute": 0.0,
+    "assertions_passed": false
+  },
+  {
+    "case": "benchmarks/reports/follow-up/soak-30min/reactor",
+    "mode": "soak",
+    "architecture": "reactor",
+    "initial_fds": 8,
+    "final_fds": 8,
+    "server_affinity": [
+      8
+    ],
+    "client_affinity": [
+      9
+    ],
+    "clock_discontinuities": [
+      {
+        "at_monotonic_ns": 133326038096916,
+        "wall_minus_monotonic_seconds": 27.486958653
+      },
+      {
+        "at_monotonic_ns": 133386225266651,
+        "wall_minus_monotonic_seconds": 920.902077362
+      }
+    ],
+    "descriptor_recovery": true,
+    "uninterrupted_clock": false,
+    "elapsed_seconds": 1800.0123762350122,
+    "completed": true,
+    "phase_totals": {
+      "steady": {
+        "200": 17896510
+      },
+      "churn": {
+        "200": 3404121
+      },
+      "overload": {
+        "503": 3876886,
+        "200": 6611,
+        "TimeoutError:headers": 12
+      },
+      "recovery": {
+        "200": 17309420
+      }
+    },
+    "unexpected_errors": 12,
+    "client_peak_rss_kib": 24728,
+    "recovery_rss": [
+      {
+        "unix_ns": 1792696128829087880,
+        "monotonic_ns": 133277805341811,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792696133838046716,
+        "monotonic_ns": 133282814300522,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792696138847411260,
+        "monotonic_ns": 133287823665524,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792696143856658096,
+        "monotonic_ns": 133292832915485,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792696148866772501,
+        "monotonic_ns": 133297843357278,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792696153876315503,
+        "monotonic_ns": 133302852904155,
+        "rss_kib": 3384,
+        "cycle": 0
+      },
+      {
+        "unix_ns": 1792697197669818214,
+        "monotonic_ns": 133398257326615,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792697202676814550,
+        "monotonic_ns": 133403264323534,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792697207699874552,
+        "monotonic_ns": 133408287382995,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792697212713822971,
+        "monotonic_ns": 133413301331331,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792697217716823918,
+        "monotonic_ns": 133418311282374,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792697222727028087,
+        "monotonic_ns": 133423321490543,
+        "rss_kib": 3384,
+        "cycle": 1
+      },
+      {
+        "unix_ns": 1792697318916025131,
+        "monotonic_ns": 133519511370629,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792697323925929467,
+        "monotonic_ns": 133524521274673,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792697328930921178,
+        "monotonic_ns": 133529526266509,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792697333956980263,
+        "monotonic_ns": 133534552325594,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792697338964582085,
+        "monotonic_ns": 133539559874638,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792697343973364212,
+        "monotonic_ns": 133544568657307,
+        "rss_kib": 3384,
+        "cycle": 2
+      },
+      {
+        "unix_ns": 1792697439170034006,
+        "monotonic_ns": 133639765276475,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792697444176107134,
+        "monotonic_ns": 133644771349477,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792697449182034761,
+        "monotonic_ns": 133649777277146,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792697454190946639,
+        "monotonic_ns": 133654786195065,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792697459198047668,
+        "monotonic_ns": 133659793385151,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792697464206941462,
+        "monotonic_ns": 133664802278903,
+        "rss_kib": 3384,
+        "cycle": 3
+      },
+      {
+        "unix_ns": 1792697560410953882,
+        "monotonic_ns": 133761006278113,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792697565417932426,
+        "monotonic_ns": 133766013256824,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792697570422972595,
+        "monotonic_ns": 133771018296951,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792697575430601666,
+        "monotonic_ns": 133776025915953,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792697580439497377,
+        "monotonic_ns": 133781034817164,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792697585447993505,
+        "monotonic_ns": 133786043307708,
+        "rss_kib": 3384,
+        "cycle": 4
+      },
+      {
+        "unix_ns": 1792697681652988841,
+        "monotonic_ns": 133882248260460,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792697686658000260,
+        "monotonic_ns": 133887253271962,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792697691665008929,
+        "monotonic_ns": 133892260280464,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792697696673385125,
+        "monotonic_ns": 133897269270049,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792697701681445336,
+        "monotonic_ns": 133902277330135,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792697706688396339,
+        "monotonic_ns": 133907284281096,
+        "rss_kib": 3384,
+        "cycle": 5
+      },
+      {
+        "unix_ns": 1792697801873633508,
+        "monotonic_ns": 134002468886932,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792697806880093302,
+        "monotonic_ns": 134007475346809,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792697811889051262,
+        "monotonic_ns": 134012484304937,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792697816896626750,
+        "monotonic_ns": 134017492281605,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792697821902633628,
+        "monotonic_ns": 134022498288691,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792697826909984255,
+        "monotonic_ns": 134027505639651,
+        "rss_kib": 3384,
+        "cycle": 6
+      },
+      {
+        "unix_ns": 1792697923102028925,
+        "monotonic_ns": 134123697267654,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792697928110177386,
+        "monotonic_ns": 134128705416115,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792697933117108721,
+        "monotonic_ns": 134133712347867,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792697938124035793,
+        "monotonic_ns": 134138719355202,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792697943134505045,
+        "monotonic_ns": 134143729824454,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792697948141203631,
+        "monotonic_ns": 134148736523165,
+        "rss_kib": 3384,
+        "cycle": 7
+      },
+      {
+        "unix_ns": 1792698043833687342,
+        "monotonic_ns": 134244428884542,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792698048867796678,
+        "monotonic_ns": 134249463320795,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792698053893083222,
+        "monotonic_ns": 134254488280297,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792698058896222668,
+        "monotonic_ns": 134259496325424,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792698063905622295,
+        "monotonic_ns": 134264505725885,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792698068914306215,
+        "monotonic_ns": 134269514412054,
+        "rss_kib": 3384,
+        "cycle": 8
+      },
+      {
+        "unix_ns": 1792698165149138842,
+        "monotonic_ns": 134365744437597,
+        "rss_kib": 3384,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792698170159240512,
+        "monotonic_ns": 134370754543058,
+        "rss_kib": 3384,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792698175174791958,
+        "monotonic_ns": 134375772353768,
+        "rss_kib": 3384,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792698180182931627,
+        "monotonic_ns": 134380780496812,
+        "rss_kib": 3384,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792698185192797463,
+        "monotonic_ns": 134385790359315,
+        "rss_kib": 3384,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792698190199740048,
+        "monotonic_ns": 134390797301734,
+        "rss_kib": 3384,
+        "cycle": 9
+      },
+      {
+        "unix_ns": 1792698286422059551,
+        "monotonic_ns": 134487017407027,
+        "rss_kib": 3384,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792698291430960220,
+        "monotonic_ns": 134492026306946,
+        "rss_kib": 3384,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792698296442873125,
+        "monotonic_ns": 134497038278407,
+        "rss_kib": 3384,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792698301449857919,
+        "monotonic_ns": 134502045263326,
+        "rss_kib": 3384,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792698306457879005,
+        "monotonic_ns": 134507053284745,
+        "rss_kib": 3384,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792698311466887591,
+        "monotonic_ns": 134512062292997,
+        "rss_kib": 3384,
+        "cycle": 10
+      },
+      {
+        "unix_ns": 1792698406708151677,
+        "monotonic_ns": 134607303482082,
+        "rss_kib": 3384,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792698411718981137,
+        "monotonic_ns": 134612314311376,
+        "rss_kib": 3384,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792698416728792417,
+        "monotonic_ns": 134617324322003,
+        "rss_kib": 3384,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792698421736900836,
+        "monotonic_ns": 134622332427797,
+        "rss_kib": 3384,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792698426744764172,
+        "monotonic_ns": 134627340290757,
+        "rss_kib": 3384,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792698431751808591,
+        "monotonic_ns": 134632347335177,
+        "rss_kib": 3384,
+        "cycle": 11
+      },
+      {
+        "unix_ns": 1792698528003252719,
+        "monotonic_ns": 134728598446053,
+        "rss_kib": 3384,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792698533011145846,
+        "monotonic_ns": 134733606338973,
+        "rss_kib": 3384,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792698538019147543,
+        "monotonic_ns": 134738614367599,
+        "rss_kib": 3384,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792698543030222503,
+        "monotonic_ns": 134743625439685,
+        "rss_kib": 3384,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792698548038741797,
+        "monotonic_ns": 134748633958812,
+        "rss_kib": 3384,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792698553047279550,
+        "monotonic_ns": 134753642499440,
+        "rss_kib": 3384,
+        "cycle": 12
+      },
+      {
+        "unix_ns": 1792698648282281136,
+        "monotonic_ns": 134848877399317,
+        "rss_kib": 3384,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792698653292202555,
+        "monotonic_ns": 134853887323236,
+        "rss_kib": 3384,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792698658300298084,
+        "monotonic_ns": 134858897194905,
+        "rss_kib": 3384,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792698663309404962,
+        "monotonic_ns": 134863906298782,
+        "rss_kib": 3384,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792698668314396714,
+        "monotonic_ns": 134868911290577,
+        "rss_kib": 3384,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792698673323856633,
+        "monotonic_ns": 134873920750954,
+        "rss_kib": 3384,
+        "cycle": 13
+      },
+      {
+        "unix_ns": 1792698769576055553,
+        "monotonic_ns": 134970171295415,
+        "rss_kib": 3512,
+        "cycle": 14
+      },
+      {
+        "unix_ns": 1792698774583269430,
+        "monotonic_ns": 134975178509459,
+        "rss_kib": 3512,
+        "cycle": 14
+      },
+      {
+        "unix_ns": 1792698779592068293,
+        "monotonic_ns": 134980188370377,
+        "rss_kib": 3512,
+        "cycle": 14
+      },
+      {
+        "unix_ns": 1792698780593225585,
+        "monotonic_ns": 134981189528627,
+        "rss_kib": 3512,
+        "cycle": 14
+      }
+    ],
+    "recovery_rss_slope_kib_per_minute": 1.3161780318705827,
+    "assertions_passed": false
+  }
+]

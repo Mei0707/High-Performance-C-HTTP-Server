@@ -1,0 +1,18 @@
+{
+  "clock_discontinuities": [
+    {
+      "before_unix_ns": 1792696176048296097,
+      "after_unix_ns": 1792696204548468792,
+      "wall_interval_seconds": 28.500172695,
+      "monotonic_interval_seconds": 1.013214042,
+      "difference_seconds": 27.486958653
+    },
+    {
+      "before_unix_ns": 1792696263730737972,
+      "after_unix_ns": 1792697185637758417,
+      "wall_interval_seconds": 921.907020445,
+      "monotonic_interval_seconds": 1.004943083,
+      "difference_seconds": 920.902077362
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+benchmarks/reports/** linguist-generated=true
+docs/validation/*.log linguist-generated=true
+docs/validation/*.json linguist-generated=true

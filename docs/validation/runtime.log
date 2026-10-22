@@ -1,0 +1,6 @@
+{"event":"listening","port":8080,"backend":"epoll","trigger":"level"}
+{"timestamp_ms":1792691277104,"level":"info","connection_id":10,"request_id":0,"method":"GET","route":"/health","status":200,"duration_seconds":0.000420,"error_category":"none"}
+{"timestamp_ms":1792691277105,"level":"info","connection_id":11,"request_id":0,"method":"GET","route":"/static/*","status":200,"duration_seconds":0.000098,"error_category":"none"}
+{"timestamp_ms":1792691277105,"level":"info","connection_id":12,"request_id":0,"method":"HEAD","route":"/static/*","status":200,"duration_seconds":0.000223,"error_category":"none"}
+{"timestamp_ms":1792691277107,"level":"info","connection_id":13,"request_id":0,"method":"POST","route":"/api/echo","status":200,"duration_seconds":0.000087,"error_category":"none"}
+{"timestamp_ms":1792691277107,"level":"info","connection_id":14,"request_id":0,"method":"GET","route":"/metrics","status":200,"duration_seconds":0.000128,"error_category":"none"}

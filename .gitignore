@@ -1,0 +1,7 @@
+build*/
+__pycache__/
+*.profraw
+*.profdata
+core
+.DS_Store
+fuzz/artifacts/

@@ -1,0 +1,31 @@
+name: Linux build and validation
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        sanitizer: ["", "address,undefined", "thread"]
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build libgtest-dev
+      - run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPULSE_SANITIZER='${{ matrix.sanitizer }}'
+      - run: cmake --build build -j2
+      - run: ctest --test-dir build --output-on-failure
+        env:
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+          UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+          TSAN_OPTIONS: halt_on_error=1
+  fuzz:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -S . -B build-fuzz -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DPULSE_BUILD_TESTS=OFF -DPULSE_FUZZ=ON -DPULSE_SANITIZER=address,undefined
+      - run: cmake --build build-fuzz --target http_parser_fuzz -j2
+      - run: mkdir -p /tmp/pulse-corpus && cp fuzz/corpus/* /tmp/pulse-corpus/ && build-fuzz/http_parser_fuzz /tmp/pulse-corpus -max_total_time=30 -max_len=131072
+  docker:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t pulsehttp .

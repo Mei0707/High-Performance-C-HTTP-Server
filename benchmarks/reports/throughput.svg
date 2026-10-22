@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="752" role="img" aria-label="Measured successful throughput in requests per second">
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="28" font-family="sans-serif" font-size="18">Successful requests/sec — development loopback measurements</text>
+<text x="15" y="69" font-family="sans-serif" font-size="13">buffered-1048576</text>
+<rect x="310" y="50" width="31.8" height="26" fill="#2463ad"/>
+<text x="351.8" y="69" font-family="sans-serif" font-size="13">2360</text>
+<text x="15" y="111" font-family="sans-serif" font-size="13">buffered-4096</text>
+<rect x="310" y="92" width="83.3" height="26" fill="#2463ad"/>
+<text x="403.3" y="111" font-family="sans-serif" font-size="13">6179</text>
+<text x="15" y="153" font-family="sans-serif" font-size="13">buffered-65536</text>
+<rect x="310" y="134" width="72.1" height="26" fill="#2463ad"/>
+<text x="392.1" y="153" font-family="sans-serif" font-size="13">5350</text>
+<text x="15" y="195" font-family="sans-serif" font-size="13">compute-workers-1</text>
+<rect x="310" y="176" width="49.7" height="26" fill="#2463ad"/>
+<text x="369.7" y="195" font-family="sans-serif" font-size="13">3691</text>
+<text x="15" y="237" font-family="sans-serif" font-size="13">compute-workers-16</text>
+<rect x="310" y="218" width="288.1" height="26" fill="#2463ad"/>
+<text x="608.1" y="237" font-family="sans-serif" font-size="13">21379</text>
+<text x="15" y="279" font-family="sans-serif" font-size="13">compute-workers-2</text>
+<rect x="310" y="260" width="100.6" height="26" fill="#2463ad"/>
+<text x="420.6" y="279" font-family="sans-serif" font-size="13">7468</text>
+<text x="15" y="321" font-family="sans-serif" font-size="13">compute-workers-4</text>
+<rect x="310" y="302" width="199.8" height="26" fill="#2463ad"/>
+<text x="519.8" y="321" font-family="sans-serif" font-size="13">14829</text>
+<text x="15" y="363" font-family="sans-serif" font-size="13">compute-workers-8</text>
+<rect x="310" y="344" width="352.7" height="26" fill="#2463ad"/>
+<text x="672.7" y="363" font-family="sans-serif" font-size="13">26171</text>
+<text x="15" y="405" font-family="sans-serif" font-size="13">epoll-et-c32</text>
+<rect x="310" y="386" width="560.0" height="26" fill="#2463ad"/>
+<text x="880.0" y="405" font-family="sans-serif" font-size="13">41556</text>
+<text x="15" y="447" font-family="sans-serif" font-size="13">epoll-lt-c32</text>
+<rect x="310" y="428" width="527.1" height="26" fill="#2463ad"/>
+<text x="847.1" y="447" font-family="sans-serif" font-size="13">39118</text>
+<text x="15" y="489" font-family="sans-serif" font-size="13">new-connection-c32</text>
+<rect x="310" y="470" width="131.6" height="26" fill="#2463ad"/>
+<text x="451.6" y="489" font-family="sans-serif" font-size="13">9764</text>
+<text x="15" y="531" font-family="sans-serif" font-size="13">overload-q1</text>
+<rect x="310" y="512" width="0.3" height="26" fill="#2463ad"/>
+<text x="320.3" y="531" font-family="sans-serif" font-size="13">19</text>
+<text x="15" y="573" font-family="sans-serif" font-size="13">sendfile-1048576</text>
+<rect x="310" y="554" width="31.4" height="26" fill="#2463ad"/>
+<text x="351.4" y="573" font-family="sans-serif" font-size="13">2329</text>
+<text x="15" y="615" font-family="sans-serif" font-size="13">sendfile-4096</text>
+<rect x="310" y="596" width="80.9" height="26" fill="#2463ad"/>
+<text x="400.9" y="615" font-family="sans-serif" font-size="13">6001</text>
+<text x="15" y="657" font-family="sans-serif" font-size="13">sendfile-65536</text>
+<rect x="310" y="638" width="77.9" height="26" fill="#2463ad"/>
+<text x="397.9" y="657" font-family="sans-serif" font-size="13">5782</text>
+<text x="15" y="699" font-family="sans-serif" font-size="13">threads-c32</text>
+<rect x="310" y="680" width="540.7" height="26" fill="#2463ad"/>
+<text x="860.7" y="699" font-family="sans-serif" font-size="13">40123</text>
+</svg>

@@ -1,0 +1,13 @@
+{
+  "title": "PulseHTTP",
+  "uid": "pulsehttp",
+  "schemaVersion": 39,
+  "version": 1,
+  "time": {"from": "now-15m", "to": "now"},
+  "panels": [
+    {"id": 1, "title": "Responses prepared / sec", "type": "timeseries", "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8}, "targets": [{"refId": "A", "expr": "rate(http_requests_total[1m])"}]},
+    {"id": 2, "title": "p99 preparation time (seconds)", "type": "timeseries", "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8}, "targets": [{"refId": "A", "expr": "histogram_quantile(0.99, rate(http_request_duration_seconds_bucket[1m]))"}]},
+    {"id": 3, "title": "Active connections / queue depth", "type": "timeseries", "gridPos": {"x": 0, "y": 8, "w": 12, "h": 8}, "targets": [{"refId": "A", "expr": "http_active_connections"}, {"refId": "B", "expr": "http_worker_queue_depth"}]},
+    {"id": 4, "title": "Rejections / sec", "type": "timeseries", "gridPos": {"x": 12, "y": 8, "w": 12, "h": 8}, "targets": [{"refId": "A", "expr": "rate(http_worker_queue_rejections_total[1m])"}]}
+  ]
+}

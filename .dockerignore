@@ -1,0 +1,4 @@
+build*
+.git
+High.pdf
+benchmarks/reports/raw

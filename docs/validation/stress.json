@@ -1,0 +1,13 @@
+{
+  "connections_per_round": 1000,
+  "rounds": 3,
+  "requests_per_connection": 10,
+  "verified_responses": 30000,
+  "elapsed_seconds": 1.9079135009960737,
+  "baseline_fds": 8,
+  "fds_after_rounds": [
+    8,
+    8,
+    8
+  ]
+}

@@ -1,0 +1,126 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 934B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04
+#2 DONE 0.8s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 121B done
+#3 DONE 0.0s
+
+#4 [dev 2/3] RUN apt-get update && apt-get install -y --no-install-recommends     build-essential cmake ninja-build python3 libgtest-dev libbenchmark-dev clang libclang-rt-18-dev wrk     ca-certificates curl && rm -rf /var/lib/apt/lists/*
+#4 CACHED
+
+#5 [dev 3/3] WORKDIR /src
+#5 CACHED
+
+#6 [dev 1/3] FROM docker.io/library/ubuntu:24.04@sha256:68ee22004a9109b44973313b02ff7b1de250f1de0f5ecb628d73f579aaff33ac
+#6 resolve docker.io/library/ubuntu:24.04@sha256:68ee22004a9109b44973313b02ff7b1de250f1de0f5ecb628d73f579aaff33ac 0.0s done
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 946.71kB 0.1s done
+#7 DONE 0.1s
+
+#8 [build 1/2] COPY . .
+#8 DONE 0.1s
+
+#9 [runtime 2/5] RUN apt-get update && apt-get install -y --no-install-recommends libstdc++6 && rm -rf /var/lib/apt/lists/*     && useradd --system --uid 10001 pulsehttp
+#9 0.770 Get:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease [256 kB]
+#9 1.676 Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+#9 1.984 Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+#9 2.155 Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+#9 2.384 Get:5 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 Packages [19.0 MB]
+#9 4.350 Get:6 http://ports.ubuntu.com/ubuntu-ports noble/multiverse arm64 Packages [274 kB]
+#9 4.351 Get:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 Packages [1776 kB]
+#9 4.438 Get:8 http://ports.ubuntu.com/ubuntu-ports noble/restricted arm64 Packages [113 kB]
+#9 4.441 Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1790 kB]
+#9 4.508 Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+#9 4.664 Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2216 kB]
+#9 4.812 Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+#9 4.816 Get:13 http://ports.ubuntu.com/ubuntu-ports noble-backports/universe arm64 Packages [36.3 kB]
+#9 4.817 Get:14 http://ports.ubuntu.com/ubuntu-ports noble-backports/main arm64 Packages [49.0 kB]
+#9 4.819 Get:15 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+#9 4.819 Get:16 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+#9 4.821 Get:17 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+#9 4.873 Get:18 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+#9 5.008 Get:19 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1476 kB]
+#9 5.910 Fetched 35.6 MB in 6s (6426 kB/s)
+#9 5.910 Reading package lists...
+#9 6.875 Reading package lists...
+#9 8.007 Building dependency tree...
+#9 8.236 Reading state information...
+#9 8.659 libstdc++6 is already the newest version (14.2.0-4ubuntu2~24.04.1).
+#9 8.659 0 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
+#9 8.693 useradd warning: pulsehttp's uid 10001 is greater than SYS_UID_MAX 999
+#9 DONE 8.7s
+
+#10 [runtime 3/5] WORKDIR /app
+#10 DONE 0.0s
+
+#11 [build 2/2] RUN cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build -j2 && ctest --test-dir build --output-on-failure
+#11 0.457 -- The CXX compiler identification is GNU 13.3.0
+#11 0.480 -- Detecting CXX compiler ABI info
+#11 0.562 -- Detecting CXX compiler ABI info - done
+#11 0.572 -- Check for working CXX compiler: /usr/bin/c++ - skipped
+#11 0.572 -- Detecting CXX compile features
+#11 0.573 -- Detecting CXX compile features - done
+#11 0.578 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+#11 0.655 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+#11 0.656 -- Found Threads: TRUE  
+#11 0.666 -- Found GTest: /usr/lib/aarch64-linux-gnu/cmake/GTest/GTestConfig.cmake (found version "1.14.0")  
+#11 0.821 -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+#11 0.822 -- Configuring done (0.6s)
+#11 0.829 -- Generating done (0.0s)
+#11 0.832 -- Build files have been written to: /src/build
+#11 1.514 [1/19] Building CXX object CMakeFiles/pulsehttp.dir/src/config.cpp.o
+#11 1.808 [2/19] Building CXX object CMakeFiles/pulsehttp.dir/src/http_parser.cpp.o
+#11 2.364 [3/19] Building CXX object CMakeFiles/pulsehttp.dir/src/http_response.cpp.o
+#11 3.201 [4/19] Building CXX object CMakeFiles/pulsehttp.dir/src/thread_pool.cpp.o
+#11 3.442 [5/19] Building CXX object CMakeFiles/pulsehttp.dir/src/router.cpp.o
+#11 3.756 [6/19] Building CXX object CMakeFiles/pulsehttp.dir/src/metrics.cpp.o
+#11 4.070 [7/19] Building CXX object CMakeFiles/pulsehttp.dir/src/logger.cpp.o
+#11 5.473 [8/19] Building CXX object CMakeFiles/pulsehttp.dir/src/server.cpp.o
+#11 6.142 [9/19] Building CXX object CMakeFiles/pulsehttp_server.dir/src/main.cpp.o
+#11 6.736 [10/19] Building CXX object CMakeFiles/pulsehttp.dir/src/reactor.cpp.o
+#11 6.806 [11/19] Building CXX object CMakeFiles/custom_routes.dir/examples/custom_routes.cpp.o
+#11 6.965 [12/19] Linking CXX static library libpulsehttp.a
+#11 7.027 [13/19] Linking CXX executable pulsehttp_server
+#11 7.080 [14/19] Linking CXX executable custom_routes
+#11 8.825 [15/19] Building CXX object CMakeFiles/thread_per_connection.dir/benchmarks/baselines/thread_per_connection.cpp.o
+#11 8.898 [16/19] Linking CXX executable thread_per_connection
+#11 10.15 [17/19] Building CXX object CMakeFiles/unit_tests.dir/tests/test_http.cpp.o
+#11 11.55 [18/19] Building CXX object CMakeFiles/unit_tests.dir/tests/test_components.cpp.o
+#11 11.63 [19/19] Linking CXX executable unit_tests
+#11 11.68 Internal ctest changing into directory: /src/build
+#11 11.68 Test project /src/build
+#11 11.68     Start 1: unit
+#11 11.69 1/3 Test #1: unit .............................   Passed    0.00 sec
+#11 11.69     Start 2: integration
+#11 35.75 2/3 Test #2: integration ......................   Passed   24.06 sec
+#11 35.75     Start 3: baseline_integration
+#11 55.91 3/3 Test #3: baseline_integration .............   Passed   20.16 sec
+#11 55.92 
+#11 55.92 100% tests passed, 0 tests failed out of 3
+#11 55.92 
+#11 55.92 Total Test time (real) =  44.24 sec
+#11 DONE 56.0s
+
+#12 [runtime 4/5] COPY --from=build /src/build/pulsehttp_server /usr/local/bin/pulsehttp
+#12 DONE 0.0s
+
+#13 [runtime 5/5] COPY www /app/www
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers 0.1s done
+#14 exporting manifest sha256:f9f5f3d6db11645abc50f19692a61777408ac8ce3ed2912c2969e8203ffd0d98 done
+#14 exporting config sha256:9d5b9164cf64f3a83a0f624c57ba11751e17d0ad06dc107d47d043c7a8be2550 done
+#14 exporting attestation manifest sha256:3a7bb594f50e2503e84ace1b7869e8641a4bcf304ecdf8fce53c4bd8699383e1 0.0s done
+#14 exporting manifest list sha256:ef60ba1551cdeb1aef9e7822a9a1f776d1ed06db168789866064f90d99bb0266 done
+#14 naming to docker.io/library/pulsehttp:latest done
+#14 unpacking to docker.io/library/pulsehttp:latest 0.0s done
+#14 DONE 0.2s

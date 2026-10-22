@@ -55,6 +55,11 @@ the Docker hypervisor remain shared. The result can still be limited by the clie
 Soak phases rotate steady keep-alive traffic, connection churn, compute overload and
 recovery. Only HTTP 503 during the overload phase is expected; other errors make the run
 fail after preserving data. Fixed-size histograms separate successful and failed latency.
+The target is resolved to IPv4 once before measurement; repeated connections use that
+address. This avoids turning connection churn into an embedded-DNS stress test. Failures
+include their I/O stage (connect, write, headers, body, close). TCP namespace counters are
+sampled with server telemetry and client windows; they can reveal retransmission or
+listen-queue pressure without changing network sysctls.
 Their percentile fields are bucket upper bounds, not exact latency quantiles. Every window
 is streamed to JSONL; no list of per-request timings grows with duration. Window data,
 phase totals and per-second telemetry permit memory/FD/recovery analysis. A descriptive

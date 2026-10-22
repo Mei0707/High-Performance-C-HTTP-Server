@@ -6,15 +6,23 @@ import subprocess
 import sys
 from types import SimpleNamespace
 import unittest
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "benchmarks/experiments"))
-from client import Histogram, Session, Window
+from client import Histogram, Session, Window, resolve_target
 from run import cpu_set
 from common import profile_valid
+from network_watch import parse_counters
 
 
 class MeasurementTests(unittest.TestCase):
+    def test_network_counters_keep_namespaces_and_detect_bad_rows(self):
+        result = parse_counters("Tcp: ActiveOpens RetransSegs\nTcp: 10 2\nTcpExt: TCPTimeouts\nTcpExt: 1\n")
+        self.assertEqual(result, {"Tcp:ActiveOpens":10,"Tcp:RetransSegs":2,"TcpExt:TCPTimeouts":1})
+        with self.assertRaises(ValueError):
+            parse_counters("Tcp: ActiveOpens RetransSegs\nTcp: 10\n")
+
     def test_expected_perf_stop_requires_valid_artifacts(self):
         result = {"perf_exit_codes": [-2, 0], "perf_stop_requested": [True, True], "perf_report_exit_code": 0}
         self.assertTrue(profile_valid(result, "10,msec,task-clock"))
@@ -87,8 +95,48 @@ class ClientTests(unittest.IsolatedAsyncioTestCase):
             session = Session(SimpleNamespace(host="127.0.0.1", port=server.sockets[0].getsockname()[1], timeout=1))
             with self.assertRaisesRegex(ValueError, "corrupt"):
                 await session.get()
+            self.assertEqual(session.last_error_stage, "body")
             self.assertIsNone(session.writer)
             await asyncio.wait_for(closed.wait(), 1)
+
+    async def test_dns_is_not_repeated_for_connection_churn(self):
+        async def hello(reader,writer):
+            try:
+                await reader.readuntil(b"\r\n\r\n")
+                body = b"Hello from PulseHTTP!\n"
+                writer.write(f"HTTP/1.1 200 OK\r\nContent-Length: {len(body)}\r\nConnection: close\r\n\r\n".encode() + body)
+                await writer.drain()
+            finally:
+                writer.close()
+                await writer.wait_closed()
+        server = await asyncio.start_server(hello,"127.0.0.1",0)
+        async with server:
+            args = SimpleNamespace(host="localhost",port=server.sockets[0].getsockname()[1],timeout=2)
+            loop = asyncio.get_running_loop()
+            with mock.patch.object(loop,"getaddrinfo",wraps=loop.getaddrinfo) as resolver:
+                await resolve_target(args)
+                for _ in range(3):
+                    session = Session(args)
+                    self.assertEqual(await session.get(close=True),200)
+                self.assertEqual(resolver.call_count,1)
+
+    async def test_timeout_reports_header_stage(self):
+        closed = asyncio.Event()
+        async def silent(reader,writer):
+            try:
+                await reader.readuntil(b"\r\n\r\n")
+                await reader.read()
+                closed.set()
+            finally:
+                writer.close()
+                await writer.wait_closed()
+        server = await asyncio.start_server(silent,"127.0.0.1",0)
+        async with server:
+            session = Session(SimpleNamespace(host="127.0.0.1",port=server.sockets[0].getsockname()[1],timeout=1))
+            with self.assertRaises(asyncio.TimeoutError):
+                await session.get()
+            self.assertEqual(session.last_error_stage,"headers")
+            await asyncio.wait_for(closed.wait(),1)
 
 
 if __name__ == "__main__":

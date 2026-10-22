@@ -8,6 +8,7 @@ import resource
 import signal
 import subprocess
 import time
+from network_watch import snapshot as network_snapshot
 
 
 def sample(pid):
@@ -30,6 +31,7 @@ def sample(pid):
         memory = Path("/sys/fs/cgroup/memory.current")
         if memory.exists():
             result["cgroup_memory_bytes"] = int(memory.read_text())
+        result["network_counters"] = network_snapshot()["counters"]
         return result
     except (FileNotFoundError, ProcessLookupError, KeyError):
         return None
@@ -43,13 +45,16 @@ def environment(binary=None):
             return None
     repo = Path(__file__).resolve().parents[2]
     git = ["git", "-c", f"safe.directory={repo}"]
-    commit = subprocess.run([*git, "rev-parse", "HEAD"], text=True, capture_output=True)
+    try:
+        commit = subprocess.run([*git, "rev-parse", "HEAD"], text=True, capture_output=True).stdout.strip() or None
+    except FileNotFoundError:
+        commit = None
     result = {"unix_ns": time.time_ns(), "platform": platform.platform(), "python": platform.python_version(),
               "affinity": sorted(os.sched_getaffinity(0)), "logical_cpus": os.cpu_count(),
               "cpuinfo": read("/proc/cpuinfo"), "meminfo": read("/proc/meminfo"),
               "fd_limit": resource.getrlimit(resource.RLIMIT_NOFILE),
               "pids_max": read("/sys/fs/cgroup/pids.max"), "memory_max": read("/sys/fs/cgroup/memory.max"),
-              "cpu_max": read("/sys/fs/cgroup/cpu.max"), "commit": commit.stdout.strip() or None}
+              "cpu_max": read("/sys/fs/cgroup/cpu.max"), "commit": commit}
     digest = hashlib.sha256()
     paths = [repo / "CMakeLists.txt", *repo.glob("include/**/*.h"), *repo.glob("src/*.cpp"),
              *repo.glob("benchmarks/baselines/*.cpp"), *repo.glob("benchmarks/experiments/*.py"),

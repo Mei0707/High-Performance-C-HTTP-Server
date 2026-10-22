@@ -6,32 +6,49 @@ from collections import Counter
 import json
 from pathlib import Path
 import resource
+import socket
 import time
 from common import environment, write_json
+from network_watch import snapshot as network_snapshot
 
 HELLO = b"Hello from PulseHTTP!\n"
 BUCKETS = [.1, .25, .5, 1, 2, 3, 5, 10, 20, 30, 50, 75, 100, 200, 300, 500, 1000, 2000, 3000, 5000, None]
+
+
+async def resolve_target(args):
+    # Keep DNS out of repeated TCP churn. The original hostname remains in metadata.
+    before = time.perf_counter()
+    addresses = await asyncio.get_running_loop().getaddrinfo(args.host, args.port, family=socket.AF_INET, type=socket.SOCK_STREAM)
+    args.resolved_host = addresses[0][4][0]
+    args.dns_resolution_ms = (time.perf_counter() - before) * 1000
 
 
 class Session:
     def __init__(self, args):
         self.args = args
         self.reader = self.writer = None
+        self.stage = "idle"
+        self.last_error_stage = None
 
     async def get(self, path="/hello", close=False):
+        self.last_error_stage = None
         try:
             return await asyncio.wait_for(self._get(path, close), self.args.timeout)
         except BaseException:
+            self.last_error_stage = self.stage
             await self.close()
             raise
 
     async def _get(self, path, close):
         if self.writer is None:
-            self.reader, self.writer = await asyncio.open_connection(self.args.host, self.args.port)
+            self.stage = "connect"
+            self.reader, self.writer = await asyncio.open_connection(getattr(self.args, "resolved_host", self.args.host), self.args.port)
         wire = (f"GET {path} HTTP/1.1\r\nHost: pulse-experiment\r\n" +
                 ("Connection: close\r\n" if close else "") + "\r\n").encode()
+        self.stage = "write"
         self.writer.write(wire)
         await self.writer.drain()
+        self.stage = "headers"
         header = await self.reader.readuntil(b"\r\n\r\n")
         lines = header.decode("ascii").split("\r\n")
         status = int(lines[0].split()[1])
@@ -39,6 +56,7 @@ class Session:
         length = int(headers["Content-Length"])
         if length < 0 or length > 2 * 1024 * 1024:
             raise ValueError("unexpected response length")
+        self.stage = "body"
         body = await self.reader.readexactly(length)
         if status == 200:
             if path == "/hello" and body != HELLO:
@@ -46,7 +64,9 @@ class Session:
             if path.startswith("/api/compute") and not body.rstrip(b"\n").isdigit():
                 raise ValueError("corrupt compute response")
         if headers.get("Connection") == "close":
+            self.stage = "close"
             await self.close()
+        self.stage = "idle"
         return status
 
     async def close(self):
@@ -107,6 +127,7 @@ class Window:
 
 
 async def idle(args):
+    await resolve_target(args)
     failures = Counter()
     sessions = []
     gate = asyncio.Semaphore(args.dial_parallel)
@@ -118,7 +139,7 @@ async def idle(args):
                     raise ValueError("non-200 admission probe")
                 sessions.append(session)
             except (OSError, ValueError, asyncio.TimeoutError, asyncio.IncompleteReadError) as error:
-                failures[type(error).__name__] += 1
+                failures[f"{type(error).__name__}:{session.last_error_stage}"] += 1
                 await session.close()
     report = {"environment": environment(), "arguments": vars(args), "requested": args.connections}
     try:
@@ -137,7 +158,7 @@ async def idle(args):
                     if await session.get() != 200:
                         failures["non_200_during_hold"] += 1
                 except (OSError, ValueError, asyncio.TimeoutError, asyncio.IncompleteReadError) as error:
-                    failures[type(error).__name__] += 1
+                    failures[f"{type(error).__name__}:{session.last_error_stage}"] += 1
             await asyncio.sleep(min(2, max(0, end - time.monotonic())))
         report["hold_end_unix_ns"] = time.time_ns()
         survived = 0
@@ -151,7 +172,7 @@ async def idle(args):
                     if await session.get() == 200:
                         survived += 1
                 except (OSError, ValueError, asyncio.TimeoutError, asyncio.IncompleteReadError) as error:
-                    failures[type(error).__name__] += 1
+                    failures[f"{type(error).__name__}:{session.last_error_stage}"] += 1
         await asyncio.gather(*(verify(s) for s in sessions))
         report.update({"survived": survived, "failures": dict(failures),
                        "target_reached": survived == args.connections and not failures})
@@ -162,6 +183,7 @@ async def idle(args):
 
 
 async def soak(args):
+    await resolve_target(args)
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=True)
     start = time.monotonic()
@@ -187,7 +209,7 @@ async def soak(args):
                         try:
                             status = await session.get(path, close)
                         except (OSError, ValueError, asyncio.TimeoutError, asyncio.IncompleteReadError) as error:
-                            status = type(error).__name__
+                            status = f"{type(error).__name__}:{session.last_error_stage}"
                             await asyncio.sleep(.01)
                         window.add(status, (time.perf_counter() - before) * 1000)
                         totals[str(status)] += 1
@@ -202,6 +224,7 @@ async def soak(args):
                 window_end = time.time_ns()
                 sink.write(json.dumps({"phase": name, "cycle": index // 4,
                                        "start_unix_ns": window_start, "end_unix_ns": window_end,
+                                       "network": network_snapshot(),
                                        **window.result()}) + "\n")
                 window = Window()
                 window_start = window_end
@@ -211,6 +234,7 @@ async def soak(args):
                     if window.success.count or window.failure.count:
                         sink.write(json.dumps({"phase": name, "cycle": index // 4,
                                                "start_unix_ns": window_start, "end_unix_ns": time.time_ns(),
+                                               "network": network_snapshot(),
                                                **window.result()}) + "\n")
                     break
             await work
